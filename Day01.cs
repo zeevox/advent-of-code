@@ -1,8 +1,11 @@
 using System;
+using System.IO;
+using System.Linq;
+using AoCHelper;
 
 namespace advent_of_code_2020
 {
-    public static class Day1
+    public sealed class Day01 : BaseDay
     {
         public static readonly int[] Input =
         {
@@ -19,6 +22,13 @@ namespace advent_of_code_2020
             1958, 1914, 1906, 178, 1979, 1994, 2004, 1862, 1704, 1903, 1997, 1876, 1992, 1864, 1932, 1918, 1962, 1802,
             1278, 1861
         };
+
+        private readonly int[] _input;
+
+        public Day01()
+        {
+            _input = File.ReadAllLines(InputFilePath).Select(int.Parse).ToArray();
+        }
 
         /// <summary>
         ///     Given a dataset, find the two entries that sum to a specified target sum
@@ -94,11 +104,22 @@ namespace advent_of_code_2020
             {
                 var complements = FindTwoIntegersWithSumV2(input, targetSum - number);
                 if (complements.Length <= 0) continue;
-                if (number + complements[0] + complements[1] == targetSum && !(complements[0] == number || complements[1] == number))
+                if (number + complements[0] + complements[1] == targetSum &&
+                    !(complements[0] == number || complements[1] == number))
                     return new[] {number, complements[0], complements[1]};
             }
 
             return new int[0];
+        }
+
+        public override string Solve_1()
+        {
+            return FindTwoIntegersWithSumV2(_input, 2020).Aggregate(1, (x, y) => x * y).ToString();
+        }
+
+        public override string Solve_2()
+        {
+            return FindThreeIntegersWithSum(_input, 2020).Aggregate(1, (x, y) => x * y).ToString();
         }
     }
 }

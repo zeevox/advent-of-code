@@ -6,4 +6,8 @@
         <RootNamespace>advent_of_code_2020</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AoCHelper" Version="0.10.0" />
+    </ItemGroup>
+
 </Project>
