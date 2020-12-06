@@ -668,3 +668,4 @@ fabric.properties
 
 # AoC-DL [https://github.com/GreenLightning/advent-of-code-downloader]
 .aocdlconfig
+leaderboard-*.json
