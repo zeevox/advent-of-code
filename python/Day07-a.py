@@ -13,7 +13,7 @@ def main():
     di = {line[0]: line[1:] for line in inp}
     count = 0
     for start_colour in (i[0] for i in inp):
-        if route_possible(start_colour, di):
+        if route_possible(start_colour, "shiny gold", di):
             count += 1
     return count
 

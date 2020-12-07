@@ -5,7 +5,7 @@ using AoCHelper;
 
 namespace advent_of_code_2020
 {
-    public sealed class Day06 : BaseDay
+    public sealed class Day06 : CustomBaseDay
     {
         private readonly string[] _input;
 

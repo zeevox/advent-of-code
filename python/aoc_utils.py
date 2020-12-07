@@ -19,7 +19,7 @@ def input():
 get the filepath of the input
 """
 def filepath():
-    return f"../Inputs/{get_day()}.txt"
+    return f"../inputs/{get_day()}.txt"
 
 """
 parse input into a list of ints
