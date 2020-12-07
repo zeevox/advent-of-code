@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using AoCHelper;
 
-namespace advent_of_code_2020.csharp
+namespace advent_of_code_2020
 {
     public sealed class Day02 : BaseDay
     {

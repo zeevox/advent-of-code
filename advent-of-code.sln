@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "advent-of-code-2019", "advent-of-code-2019\advent-of-code-2019.csproj", "{00C6CFDD-12DF-4FC9-8D65-4EC5E3D602E0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "advent-of-code-2020", "advent-of-code-2020\advent-of-code-2020.csproj", "{AAEFB920-D73F-49E2-9140-1DA6ED4AFBAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "advent-of-code-2020", "csharp\advent-of-code-2020.csproj", "{AAEFB920-D73F-49E2-9140-1DA6ED4AFBAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
