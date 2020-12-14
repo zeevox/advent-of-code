@@ -41,6 +41,16 @@ def modinv(a, m):
         return x % m
 
 #############
+"""
+PART ONE-LINER
+"""
+ts, buses = int((inp := aoc_utils.input_string_list())[0]), list(map(int, filter(lambda x: x != "x", inp[1].split(","))))
+print((b := min(buses, key=lambda x: ((ts // x) + 1) * x)) * ((((ts // b) + 1) * b) - ts))
+
+#############
+"""
+PART TWO
+"""
 
 """
 we are solving a set of modular arithmetic equations. using the sample from the
