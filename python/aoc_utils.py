@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import os
+import sys
 from __main__ import __file__
 
 """
@@ -7,7 +7,7 @@ get the day of the python script calling this function
 NB: no validation for filename, it is assumed to be DayXX.py
 """
 def get_day():
-    return os.path.basename(__file__)[3:5];
+    return sys.argv[-1][3:5]
 
 """
 get a reference straight to the input file
