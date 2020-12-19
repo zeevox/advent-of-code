@@ -14,6 +14,8 @@ for rule in rules.split("\n"):
     rule = rule.split(": ")
     rs[rule[0]] = rule[1]
 
+from functools import lru_cache
+@lru_cache()
 def eval(s, part2 = False):
     groups = []
     for group in s.split(" | "):
@@ -48,3 +50,4 @@ for i in [False, True]:
             valids += 1
 
     print(valids)
+    eval.cache_clear()
