@@ -10,4 +10,4 @@ nexttime() {
 
 aoc_challenge_publish_time="$(nexttime '00:00 EST')"
 
-aocdl -output "inputs/$(date -d @$aoc_challenge_publish_time +%d).txt" -wait
+aocdl -output "$(date +%Y)/inputs/$(date -d @$aoc_challenge_publish_time +%d).txt" -wait
