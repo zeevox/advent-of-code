@@ -17,12 +17,8 @@ def main():
     g = nx.Graph()
     g.add_edges_from(functools.reduce(operator.iconcat, lines, []))
 
-    connected_nodes = set()
-    for edge in nx.edge_bfs(g, 0):
-        connected_nodes.update(edge)
-
-    print(len(connected_nodes))
-    print(len(list(nx.connected_components(g))))
+    print(len(nx.node_connected_component(g, 0)))
+    print(nx.number_connected_components(g))
 
 if __name__ == "__main__":
     main()
