@@ -1,51 +1,55 @@
-##!/usr/bin/python3
+# !/usr/bin/python3
 
-#from collections import *
-#import itertools
-#import random
+# from collections import *
+# import itertools
+# import random
 import re
-#import sys
+
+# import sys
 import aoc_utils
 
 inp = aoc_utils.input_string_list()
-rules = {(x := re.split(": |-| or ", s))[0]: list(map(int,x[1:])) for s in inp[:20]}
-#print(rules)
+rules = {(x := re.split(": |-| or ", s))[0]: list(map(int, x[1:])) for s in inp[:20]}
+# print(rules)
+
 
 def valid_any(n):
     for rule in rules.values():
-#        print(n, rule)
+        #        print(n, rule)
         if valid(n, rule):
             return True
     return False
 
+
 def valid(n, rule):
-    return ((n >= rule[0] and n <= rule[1]) or (n >= rule[2] and n <= rule[3]))
+    return (n >= rule[0] and n <= rule[1]) or (n >= rule[2] and n <= rule[3])
+
 
 sum = 0
-ts = inp[inp.index("nearby tickets:")+1:]
-for ticket in inp[inp.index("nearby tickets:")+1:]:
-    for value in map(int,ticket.split(",")):
+ts = inp[inp.index("nearby tickets:") + 1 :]
+for ticket in inp[inp.index("nearby tickets:") + 1 :]:
+    for value in map(int, ticket.split(",")):
         if not valid_any(value):
-#            print(value)
+            #            print(value)
             sum += value
             ts.remove(ticket)
 
 print(sum)
 
-ts = [list(map(int,ticket.split(","))) for ticket in ts]
+ts = [list(map(int, ticket.split(","))) for ticket in ts]
 
 cols = {}
-myticket = list(map(int,inp[inp.index("your ticket:")+1].split(",")))
+myticket = list(map(int, inp[inp.index("your ticket:") + 1].split(",")))
 for n, rule in rules.items():
-    #if n[:9] != "departure":
+    # if n[:9] != "departure":
     #    continue
     for col in range(len(ts[0])):
-        if all(valid(int(t[col]),rule) for t in ts):
+        if all(valid(int(t[col]), rule) for t in ts):
             cols[n] = cols.get(n, []) + [col]
 
-#print(cols)
+# print(cols)
 
-fixed =[]
+fixed = []
 while not len(fixed) == len(cols):
     for n, col in cols.items():
         if len(col) == 1:
@@ -55,8 +59,8 @@ while not len(fixed) == len(cols):
             for f in fixed:
                 if f in col:
                     col.remove(f)
-    #print(cols, fixed)
-#print(cols)
+    # print(cols, fixed)
+# print(cols)
 
 
 p = 1

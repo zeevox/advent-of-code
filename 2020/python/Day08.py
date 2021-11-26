@@ -7,13 +7,14 @@ import re
 import sys
 import aoc_utils
 
-def calculate(inp, acc = 0, pointer = 0, debug = False):
+
+def calculate(inp, acc=0, pointer=0, debug=False):
     pointers = []
     while pointer < len(inp):
         if pointer in pointers:
             if debug:
                 print(f"accumulator: {acc}")
-            return None # infinite loop
+            return None  # infinite loop
         kv = inp[pointer].split()
         pointers.append(pointer)
         if kv[0] == "acc":
@@ -26,10 +27,11 @@ def calculate(inp, acc = 0, pointer = 0, debug = False):
 
     return acc
 
+
 inp = aoc_utils.input_string_list()
 
 print("=== PART 1 ===")
-calculate(inp, debug = True)
+calculate(inp, debug=True)
 
 print("=== PART 2 ===")
 for line_no in range(len(inp)):

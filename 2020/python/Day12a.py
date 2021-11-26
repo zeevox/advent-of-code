@@ -16,7 +16,7 @@ for i in ins:
         y += n
     elif c == "S":
         y -= n
-    elif c =="E":
+    elif c == "E":
         x += n
     elif c == "W":
         x -= n
@@ -38,4 +38,4 @@ for i in ins:
         elif d == 270:
             x -= n
     print(x, y, d)
-print(abs(x)+abs(y))
+print(abs(x) + abs(y))

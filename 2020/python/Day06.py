@@ -7,7 +7,8 @@ import re
 import sys
 import aoc_utils
 
-def main(parttwo = False):
+
+def main(parttwo=False):
     inp = aoc_utils.input_block_list()
     count = 0
     for group in inp:
@@ -21,5 +22,7 @@ def main(parttwo = False):
             group = group.replace("\n", "")
             count += len(set(group))
     return count
+
+
 print(main())
 print(main(True))

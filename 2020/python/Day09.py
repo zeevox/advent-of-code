@@ -36,7 +36,9 @@ for n in range(preamble, len(inp)):
     # the commented code was necessary to get the sample input working
     # but for the actual input it broke my code?!?
     # not sure what went wrong there
-    if (x := di.get(inp[n], -1)) == -1: #or not all([i in range(n - preamble, n) for i in x]):
+    if (
+        x := di.get(inp[n], -1)
+    ) == -1:  # or not all([i in range(n - preamble, n) for i in x]):
         invalid_num = inp[n]
 
 print("No such invalid number" if invalid_num == -1 else invalid_num)

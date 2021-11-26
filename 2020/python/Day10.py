@@ -11,11 +11,13 @@ xs = [0] + sorted(aoc_utils.input_int_list())
 
 di = {}
 for i, x in enumerate(xs):
-    di[x] = [x + j for j in [1,2,3] if x + j in xs[i + 1 : i + 4]]
+    di[x] = [x + j for j in [1, 2, 3] if x + j in xs[i + 1 : i + 4]]
 
 e = max(di.keys())
 
 cache = {}
+
+
 def paths(k):
     p = 0
     if k >= e:
@@ -25,5 +27,6 @@ def paths(k):
             cache[s] = paths(s)
         p += cache[s]
     return p
+
 
 print(paths(0))

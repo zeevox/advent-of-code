@@ -11,8 +11,10 @@ import aoc_utils
 ms = aoc_utils.input_int_list()
 print(sum(map(lambda m: (m // 3) - 2, ms)))
 
+
 def fuel(n):
     return max(0, (n // 3) - 2)
+
 
 s = 0
 for m in ms:

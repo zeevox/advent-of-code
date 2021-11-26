@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 class cup:
     def __init__(self, label):
         self.label = int(label)
@@ -11,9 +12,10 @@ class cup:
 # get the cups, then pad with numbers
 def get_cups(s, maxlen):
     yield from map(cup, list(s))
-    yield from map(cup, range(len(s)+1, maxlen+1))
+    yield from map(cup, range(len(s) + 1, maxlen + 1))
 
-def process_cups(s, n_cups = 1000000):
+
+def process_cups(s, n_cups=1000000):
 
     # perhaps not the most efficient way of generating a linked list, but it works
     cups = list(get_cups(s, n_cups))
@@ -27,6 +29,7 @@ def process_cups(s, n_cups = 1000000):
         this_cup.link(next_cup, prev_cup)
     return cups[0]
 
+
 def move(current_cup):
     next_three = [current_cup.next, current_cup.next.next, current_cup.next.next.next]
 
@@ -38,6 +41,7 @@ def move(current_cup):
     destination_cup.next, next_three[2].next = next_three[0], destination_cup.next
 
     return current_cup.next
+
 
 current_cup = process_cups("318946572")
 for i in range(10000000):

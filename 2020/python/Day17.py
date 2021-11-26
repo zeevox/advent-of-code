@@ -17,6 +17,7 @@ for y, line in enumerate(aoc_utils.input().readlines()):
 deltas = set(itertools.product([-1, 0, 1], repeat=dimensions))
 deltas.remove(tuple([0] * dimensions))
 
+
 def cycle():
     data = deepcopy(d)
     changeable = set()
@@ -33,9 +34,10 @@ def cycle():
         if not (neighbours == 2 or neighbours == 3):
             data.discard(point)
         else:
-            if neighbours == 3: # and point in d:
+            if neighbours == 3:  # and point in d:
                 data.add(point)
     return data
+
 
 for _ in range(6):
     d = cycle()

@@ -13,7 +13,7 @@ all_allergens = set()
 
 inp = aoc_utils.input().read()
 for line in inp.strip().splitlines():
-    split  = line.strip().split(" (contains ")
+    split = line.strip().split(" (contains ")
 
     ingredients = set(split[0].strip().split(" "))
     all_ingredients += ingredients
@@ -22,7 +22,7 @@ for line in inp.strip().splitlines():
     all_allergens |= allergens
 
     for allergen in allergens:
-        #print(allergen, ingredients)
+        # print(allergen, ingredients)
         database[allergen] += [set(ingredients)]
 
 print("== Initial database ==")
@@ -38,7 +38,12 @@ hypoallergenic = set(all_ingredients) - set.union(*database.values())
 
 print("== Hypoallergenic ingredients ==")
 print(hypoallergenic)
-print(sum(all_ingredients.count(hypoallergenic_ingredient) for hypoallergenic_ingredient in hypoallergenic))
+print(
+    sum(
+        all_ingredients.count(hypoallergenic_ingredient)
+        for hypoallergenic_ingredient in hypoallergenic
+    )
+)
 
 print("== Dangerous ingredient list ==")
 while not all(len(ingredients) == 1 for ingredients in database.values()):
@@ -49,4 +54,3 @@ while not all(len(ingredients) == 1 for ingredients in database.values()):
                     continue
                 database[other_allergen] -= ingredients
 print(",".join(list(database[k])[0] for k in sorted(database)))
-

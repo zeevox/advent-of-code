@@ -4,6 +4,7 @@ import networkx as nx
 import functools
 import operator
 
+
 def parse_line(line: str) -> list[tuple[int, int]]:
     node, children = line.strip().split(" <-> ")
     children = children.split(",")
@@ -19,6 +20,7 @@ def main():
 
     print(len(nx.node_connected_component(g, 0)))
     print(nx.number_connected_components(g))
+
 
 if __name__ == "__main__":
     main()

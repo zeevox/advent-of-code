@@ -8,14 +8,18 @@ import sys
 import aoc_utils
 import queue
 
+
 def main():
-    inp = [re.split(" bags contain |, ", line) for line in aoc_utils.input_string_list()]
+    inp = [
+        re.split(" bags contain |, ", line) for line in aoc_utils.input_string_list()
+    ]
     di = {line[0]: line[1:] for line in inp}
     count = 0
     for start_colour in (i[0] for i in inp):
         if route_possible(start_colour, "shiny gold", di):
             count += 1
     return count
+
 
 def route_possible(start_colour, end_colour, di):
     q = queue.Queue()
@@ -31,5 +35,6 @@ def route_possible(start_colour, end_colour, di):
                     if match := re.search(r"(?i)\d* (\w+ \w+).*", containable):
                         q.put([match.group(1)] + di[match.group(1)])
     return False
+
 
 print(main())

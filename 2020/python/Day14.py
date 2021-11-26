@@ -19,7 +19,7 @@ for line in aoc_utils.input_string_list():
         out = ""
         xs = []
         # 36 bits - hardcoded value, iterate over mask and bits simultaneously
-        for i, (bv, bm) in enumerate(zip(list(f'{adr:b}'.zfill(36)), list(mask))):
+        for i, (bv, bm) in enumerate(zip(list(f"{adr:b}".zfill(36)), list(mask))):
             if bm == "X":
                 out += "{}"
                 xs.append(i)
@@ -33,4 +33,3 @@ for line in aoc_utils.input_string_list():
             mem[int(out.format(*list(f"{i:b}".zfill(len(xs)))), 2)] = v
 
 print(sum(mem.values()))
-

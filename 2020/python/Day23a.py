@@ -11,6 +11,7 @@ import aoc_utils
 def inp():
     return int(aoc_utils.input().read())
 
+
 def destination(search, cups):
     while 1:
         if search in cups:
@@ -18,6 +19,7 @@ def destination(search, cups):
         search -= 1
         if search < min(cups):
             search = max(cups)
+
 
 def move(current, cups):
     current_card = cups[current]
@@ -36,7 +38,7 @@ def move(current, cups):
     dest = destination(current_card - 1, cups)
     print("destination:", cups[dest])
 
-    new_cups = cups[:dest + 1] + picked + cups[dest + 1:]
+    new_cups = cups[: dest + 1] + picked + cups[dest + 1 :]
     new_current = (current + 1) % len(new_cups)
 
     if dest < current:
@@ -45,18 +47,21 @@ def move(current, cups):
 
     return new_current, new_cups
 
+
 def print_cups(current, cups):
     print("cups:", end=" ")
     for i, c in enumerate(cups):
         print(f"({c})" if i == current else c, end=" ")
     print()
 
+
 def output(cups):
-    print(*cups[cups.index(1)+1:], *cups[:cups.index(1)], sep="")
+    print(*cups[cups.index(1) + 1 :], *cups[: cups.index(1)], sep="")
+
 
 if __name__ == "__main__":
     current = 0
-    #cups = list(map(int, list("389125467")))
+    # cups = list(map(int, list("389125467")))
     cups = list(map(int, list("318946572")))
     print(current, cups)
 

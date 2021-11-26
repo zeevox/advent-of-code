@@ -1,23 +1,25 @@
 #!/usr/bin/python3
 
+from copy import deepcopy
 from collections import *
 import aoc_utils
 
 delta = {
-            "nw": (0, 1),
-            "ne": (1, 0),
-            "e": (1, -1),
-            "se": (0, -1),
-            "sw": (-1, 0),
-            "w": (-1, 1)
-        }
+    "nw": (0, 1),
+    "ne": (1, 0),
+    "e": (1, -1),
+    "se": (0, -1),
+    "sw": (-1, 0),
+    "w": (-1, 1),
+}
+
 
 def parse(s):
     x, y = 0, 0
     i = 0
     while i < len(s):
         if s[i] == "n" or s[i] == "s":
-            d = delta[s[i:i+2]]
+            d = delta[s[i : i + 2]]
             i += 2
         else:
             d = delta[s[i]]
@@ -47,8 +49,6 @@ def count_black_tiles(tiles):
     return black_tiles
 
 
-from copy import deepcopy
-
 def cellular_automata(tiles):
     new_tiles = deepcopy(tiles)
 
@@ -56,7 +56,8 @@ def cellular_automata(tiles):
     # initialise all the adjacent tiles that could change value on this round
     for tile in new_tiles.keys():
         for adj_tile in adjacent_tiles(tile):
-            if tiles[adj_tile] == None: pass
+            if tiles[adj_tile] == None:
+                pass
 
     for tile, flips in tiles.items():
         adjacent_black_tiles = 0

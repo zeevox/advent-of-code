@@ -2,6 +2,7 @@
 
 import aoc_utils
 
+
 def calc_loop(subject, end):
     value = 1
     loop_size = 0
@@ -18,8 +19,9 @@ def transform(subject, loop_size):
         value = (value * subject) % 20201227
     return value
 
+
 inp = aoc_utils.input().readlines()
-#inp = ["5764801", "17807724"]
+# inp = ["5764801", "17807724"]
 
 card_pk, door_pk = list(map(int, inp))
 

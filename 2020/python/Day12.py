@@ -17,7 +17,7 @@ for i in ins:
         wy += n
     elif c == "S":
         wy -= n
-    elif c =="E":
+    elif c == "E":
         wx += n
     elif c == "W":
         wx -= n
@@ -31,4 +31,4 @@ for i in ins:
         sx += n * wx
         sy += n * wy
     print(sx, sy, d)
-print(abs(sx)+abs(sy))
+print(abs(sx) + abs(sy))
