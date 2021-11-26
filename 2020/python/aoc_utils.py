@@ -1,46 +1,48 @@
 #!/usr/bin/python3
-import sys
-from __main__ import __file__
+import inspect
+import os
 
-"""
-get the day of the python script calling this function
-NB: no validation for filename, it is assumed to be DayXX.py
-"""
+
+def _top_level_caller():
+    """get the filename of the original script that called this up"""
+    return inspect.stack()[-1].filename
+
+
 def get_day():
-    return sys.argv[-1][3:5]
+    """
+    get the day of the python script calling this function
+    NB: no validation for filename, it is assumed to be DayXX.py
+    """
+    return os.path.basename(_top_level_caller())[3:5]
 
-"""
-get a reference straight to the input file
-"""
+
+def filepath():
+    """get the filepath of the input"""
+    return os.path.abspath(
+        f"{os.path.dirname(_top_level_caller())}/../inputs/{get_day()}.txt"
+    )
+
+
 def input():
+    """get a reference straight to the input file"""
     return open(filepath(), "r")
 
-"""
-get the filepath of the input
-"""
-def filepath():
-    return f"../inputs/{get_day()}.txt"
 
-"""
-parse input into a list of ints
-"""
 def input_int_list():
+    """parse input into a list of ints"""
     return [int(line.rstrip()) for line in open(filepath(), "r")]
 
-"""
-parse input into a list of strings
-"""
+
 def input_string_list():
+    """parse input into a list of strings"""
     return [line.rstrip() for line in open(filepath(), "r")]
 
-"""
-input split by paragraph i.e. two newlines
-"""
+
 def input_block_list():
+    """input split by paragraph i.e. two newlines"""
     return open(filepath(), "r").read().split("\n\n")
 
-"""
-remove empty entries (e.g. when splitting a string)
-"""
+
 def filter_empty(li):
+    """remove empty entries (e.g. when splitting a string)"""
     return list(filter(None, li))
