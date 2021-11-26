@@ -80,3 +80,17 @@ while input_molecule != "e":
 
 # this is the answer for part 2
 print(iterations)
+
+# So here is an incredibly hacky solution for Part 2 that will always work
+# (assuming the input is valid).
+number_of_uppercase_letters = 0
+for character in input_molecule:
+    if character.isupper():
+        number_of_uppercase_letters += 1
+print(
+    number_of_uppercase_letters
+    - input_molecule.count("Rn")
+    - input_molecule.count("Ar")
+    - 2 * input_molecule.count("Y")
+    - 1
+)
