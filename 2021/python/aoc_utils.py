@@ -40,7 +40,7 @@ def input_string_list():
 
 def input_block_list():
     """input split by paragraph i.e. two newlines"""
-    return open(filepath(), "r").read().split("\n\n")
+    return open(filepath(), "r").read().strip().split("\n\n")
 
 
 def filter_empty(li):
