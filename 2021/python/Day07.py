@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+
+import aoc_utils
+
+
+def sum_one_to_n(x: int):
+    """Formula extracted to helper function for shorter lambda"""
+    return (x * (x + 1)) // 2
+
+
+def main(xs: list[int]):
+    """
+    Pretty much just brute force it
+    For each x-coordinate that the crabs could reduce to,
+    Calculate total fuel required to get there for all the crabs
+    And take the minimum of the generator expression
+    """
+    return (
+        min(sum(map(lambda y: abs(y - i), xs)) for i in range(max(xs))),
+        min(sum(map(lambda y: sum_one_to_n(abs(y - i)), xs)) for i in range(max(xs))),
+    )
+
+
+if __name__ == "__main__":
+    print(main(list(map(int, "16,1,2,0,4,2,7,1,2,14".split(",")))))
+    print(main(list(map(int, aoc_utils.input_string_list()[0].split(",")))))
