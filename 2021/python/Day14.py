@@ -3,6 +3,7 @@
 import aoc_utils
 from collections import Counter, defaultdict
 import more_itertools
+from pprint import pprint
 
 
 def main(molecule: str, replacements):
@@ -13,6 +14,7 @@ def main(molecule: str, replacements):
         init, end = rule.split(" -> ")
         rules[init] = end
 
+    print(molecule)
     for _ in range(10):
         insertions = []
         for i in range(len(molecule) - 1):
@@ -21,6 +23,7 @@ def main(molecule: str, replacements):
                 insertions.append((i + 1, rules[pair]))
         for ii, ic in reversed(insertions):
             molecule = molecule[:ii] + ic + molecule[ii:]
+        print(molecule)
 
     c = Counter(molecule).most_common()
     print(c[0][1] - c[-1][1])
@@ -35,13 +38,11 @@ def main2(molecule: str, replacements: str, iterations=10):
     # similarly to one of the earlier days, have a
     # dictionary that stores the number of each type
     # of pair instead of a list of all the pairs themselves
-    pairs = defaultdict(
-        int,
-        {
-            pair: molecule.count(pair)
-            for pair in map("".join, more_itertools.windowed(molecule, 2))
-        },
-    )
+    # sheer luck that my puzzle input had no overlapping pairs e.g. HH
+    # because my initial parsing did not account for that
+    pairs = defaultdict(int)
+    for pair in map("".join, more_itertools.windowed(molecule, 2)):
+        pairs[pair] += 1
 
     # we do not care about the iteration step we are
     # on, discard the counter variable
@@ -52,6 +53,8 @@ def main2(molecule: str, replacements: str, iterations=10):
         for pair, count in list(pairs.items()):
 
             # inverted if statement for less indentation
+            # but also turns out all pairs are in rules
+            # so kinda useless if statement anyway
             if pair not in rules:
                 continue
 
