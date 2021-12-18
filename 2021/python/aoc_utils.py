@@ -28,19 +28,27 @@ def input():
     return open(filepath(), "r")
 
 
+def input_string():
+    """read input into a string"""
+    return open(filepath(), "r").read().strip()
+
+
 def input_int_list():
     """parse input into a list of ints"""
-    return [int(line.rstrip()) for line in open(filepath(), "r")]
+    with open(filepath(), "r") as file:
+        return [int(line.rstrip()) for line in file]
 
 
 def input_string_list():
     """parse input into a list of strings"""
-    return [line.rstrip() for line in open(filepath(), "r")]
+    with open(filepath(), "r") as file:
+        return [line.rstrip() for line in file]
 
 
 def input_block_list():
     """input split by paragraph i.e. two newlines"""
-    return open(filepath(), "r").read().strip().split("\n\n")
+    with open(filepath(), "r") as file:
+        return file.read().strip().split("\n\n")
 
 
 def filter_empty(li):
