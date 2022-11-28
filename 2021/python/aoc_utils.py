@@ -1,6 +1,10 @@
 #!/usr/bin/python3
+
 import inspect
 import os
+
+"""Whether to use a test file"""
+SAMPLE = False
 
 
 def _top_level_caller():
@@ -19,7 +23,7 @@ def get_day():
 def filepath():
     """get the filepath of the input"""
     return os.path.abspath(
-        f"{os.path.dirname(_top_level_caller())}/../inputs/{get_day()}.txt"
+        f"{os.path.dirname(_top_level_caller())}/../inputs/{get_day()}{'.s' if SAMPLE else ''}.txt"
     )
 
 
