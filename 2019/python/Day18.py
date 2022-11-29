@@ -24,7 +24,7 @@ def get_neighbours(
     Yield the coordinates of points directly (or diagonally) adjacent to a given point, excluding points that are out of bounds
     """
     print(*itertools.product((-1, 0, 1), repeat=len(point)))
-    print(*itertools.permutations([1] + [0] * (len(point)-2)))
+    print(*itertools.permutations([1] + [0] * (len(point) - 2)))
 
 
 def get_neighbours2(

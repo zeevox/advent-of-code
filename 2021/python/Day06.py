@@ -7,7 +7,6 @@ import re
 import sys
 import aoc_utils
 
-
 if __name__ == "__main__":
     # nine slots for fish aged 0-8
     fishes = deque([0] * 9)

@@ -16,7 +16,6 @@ My answers were
 inp = aoc_utils.input_int_list()
 
 preamble = 25
-
 """
 Finding all the sums of two numbers in the `preamble` length subarray
 
@@ -42,7 +41,6 @@ for n in range(preamble, len(inp)):
         invalid_num = inp[n]
 
 print("No such invalid number" if invalid_num == -1 else invalid_num)
-
 """
 # Finding the sum of a subarray
 

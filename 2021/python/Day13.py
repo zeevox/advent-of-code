@@ -25,7 +25,7 @@ def main(coords, instructions):
         if not printed:
             print(f"Part 1: {len(coords)} points after first fold")
             printed = True
-    
+
     print("#### Part 2: Decipher the 8 characters below")
     for y in range(max(c[1] for c in coords) + 1):
         for x in range(max(c[0] for c in coords) + 1):

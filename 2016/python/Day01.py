@@ -39,5 +39,4 @@ for op, *count in instructions:
         visited |= visits
         x -= count
 
-
 print(abs(x) + abs(y))

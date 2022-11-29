@@ -43,7 +43,7 @@ def main(grid: list[list[int]]):
     print(critical_levels_sum)
 
     basin_sizes = []
-    
+
     for minimum in minimum_positions:
         q = queue.Queue()
         q.put(minimum)

@@ -5,7 +5,7 @@ from operator import itemgetter
 
 def losb(number: int) -> int:
     """lowest odd square integer below number"""
-    sqrt = int(number ** 0.5)
+    sqrt = int(number**0.5)
     if sqrt % 2 == 0:
         sqrt -= 1
     return sqrt
@@ -17,7 +17,7 @@ def part1(number: int) -> int:
     # coordinates of this number
     coords = [br_corner // 2, br_corner // 2 * -1]
     # how many extra squares from bottom-right corner
-    diff = number - br_corner ** 2
+    diff = number - br_corner**2
     # which edge the data is located on
     edge = diff // (br_corner + 1)
     # how many extra squares from nearest corner

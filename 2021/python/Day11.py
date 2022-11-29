@@ -42,7 +42,7 @@ def cycle(arr):
     # otherwise neighbours will keep increasing their energy level
     for fx, fy in flashed:
         arr[fy][fx] = 0
-    # return the total number of flashes that occurred 
+    # return the total number of flashes that occurred
     # as well as the new grid for the next cycle
     return len(flashed), arr
 

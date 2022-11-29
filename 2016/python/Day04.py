@@ -1,14 +1,11 @@
 #!/usr/bin/python3
 
-
 from collections import Counter
 from operator import itemgetter
 from string import ascii_lowercase
 
-
 with open(f"2016/inputs/04.txt", "r") as f:
     rooms = f.read().strip().splitlines()
-
 
 count = 0
 for room in rooms:

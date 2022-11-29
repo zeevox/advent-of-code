@@ -10,7 +10,7 @@ import aoc_utils
 
 def main():
     inp = aoc_utils.input_string_list()
-    li = [False] * (2 ** 10)
+    li = [False] * (2**10)
     for seat in inp:
         seat = (
             seat.replace("B", "1").replace("F", "0").replace("R", "1").replace("L", "0")

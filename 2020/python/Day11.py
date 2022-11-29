@@ -108,7 +108,6 @@ ts = [".##.##.", "#.#.#.#", "##...##", "...L...", "##...##", "#.#.#.#", ".##.##.
 # test that adj_seats works
 # print(adj_seats(3,3,ts))
 
-
 rs = [list(s) for s in aoc_utils.input_string_list()]
 rows, cols = len(rs[0]), len(rs)
 

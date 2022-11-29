@@ -62,7 +62,6 @@ while not len(fixed) == len(cols):
     # print(cols, fixed)
 # print(cols)
 
-
 p = 1
 for k, v in cols.items():
     if k[:9] == "departure":

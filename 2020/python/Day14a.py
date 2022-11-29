@@ -23,5 +23,4 @@ for line in aoc_utils.input_string_list():
         # print(f"{mask}\n{v:36b}\t{v}\n{out}")
         mem[adr] = int(out, 2)
 
-
 print(sum(mem.values()))

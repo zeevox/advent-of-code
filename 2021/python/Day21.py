@@ -3,6 +3,7 @@ import aoc_utils
 
 from parse import parse
 
+
 def main(a, b):
     rolls = 0
     players = [0, 0]

@@ -14,6 +14,7 @@ def count_double_lowers(path: list[str]):
             count += 1
     return count
 
+
 def main(lines: list[str]):
     g = nx.Graph()
     for line in lines:
@@ -33,7 +34,6 @@ def main(lines: list[str]):
             q.put(node + [n])
     print(len(paths))
 
-
     q = queue.Queue()
     q.put(["start"])
     paths = []
@@ -43,7 +43,9 @@ def main(lines: list[str]):
             paths.append(node)
             continue
         for n in g.neighbors(node[-1]):
-            if n == "start" or (n.islower() and count_double_lowers(node) > 0 and n in node):
+            if n == "start" or (
+                n.islower() and count_double_lowers(node) > 0 and n in node
+            ):
                 continue
             q.put(node + [n])
     print(len(paths))

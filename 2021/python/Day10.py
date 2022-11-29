@@ -7,7 +7,6 @@ import re
 import sys
 import aoc_utils
 
-
 """matching bracket-pairs to avoid using if-else statements"""
 matches = {
     "(": ")",
@@ -15,7 +14,6 @@ matches = {
     "{": "}",
     "<": ">",
 }
-
 """syntax checker points map"""
 points_map = {
     ")": 3,
@@ -23,7 +21,6 @@ points_map = {
     "}": 1197,
     ">": 25137,
 }
-
 """autocomplete points map"""
 ac_points_map = {
     ")": 1,
