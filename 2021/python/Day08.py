@@ -26,11 +26,15 @@ def main(xs: list[str]):
         eight = next(filter(lambda x: len(x) == 7, inp))
         one = next(filter(lambda x: len(x) == 2, inp))
         nine = next(
-            filter(lambda x: len(x) == 6 and all(segment in x for segment in four), inp)
+            filter(
+                lambda x: len(x) == 6 and all(segment in x for segment in four),
+                inp,
+            )
         )
         three = next(
             filter(
-                lambda x: len(x) == 5 and all(segment in x for segment in seven), inp
+                lambda x: len(x) == 5 and all(segment in x for segment in seven),
+                inp,
             )
         )
         zero = next(

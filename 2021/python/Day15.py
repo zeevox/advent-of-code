@@ -106,7 +106,9 @@ def part2(grid: list[list]):
                     point = (x + i * gx, y + j * gy)
                     for adj in adjacent(point, (gx * 5, gy * 5)):
                         g.add_edge(
-                            adj, point, weight=((grid[y][x] + offset - 1) % 9 + 1)
+                            adj,
+                            point,
+                            weight=((grid[y][x] + offset - 1) % 9 + 1),
                         )
 
     print(

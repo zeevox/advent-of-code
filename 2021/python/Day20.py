@@ -24,7 +24,9 @@ def bounds(lit_pixels: set[tuple[int, int]]) -> tuple[int, int, int, int]:
 
 
 def main(
-    algorithm: dict[int, int], lit_pixels: set[tuple[int, int]], infinite_lit: bool
+    algorithm: dict[int, int],
+    lit_pixels: set[tuple[int, int]],
+    infinite_lit: bool,
 ) -> set[tuple[int, int]]:
     min_x, max_x, min_y, max_y = bounds(lit_pixels)
     new_lit_pixels = set()

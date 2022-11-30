@@ -29,6 +29,7 @@ if __name__ == "__main__":
     string = aoc_utils.input_string()
     # string = "Player 1 starting position: 4\nPlayer 2 starting position: 8"
     a, b = parse(
-        "Player 1 starting position: {:d}\nPlayer 2 starting position: {:d}", string
+        "Player 1 starting position: {:d}\nPlayer 2 starting position: {:d}",
+        string,
     )
     main(a, b)

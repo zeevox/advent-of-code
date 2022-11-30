@@ -32,6 +32,7 @@ def main(a_pos, b_pos, a_score=0, b_score=0):
 if __name__ == "__main__":
     string = aoc_utils.input_string()
     a, b = parse.parse(
-        "Player 1 starting position: {:d}\nPlayer 2 starting position: {:d}", string
+        "Player 1 starting position: {:d}\nPlayer 2 starting position: {:d}",
+        string,
     )
     print(max(main(a - 1, b - 1)))

@@ -98,7 +98,10 @@ def move_r2c(c, rs):
             # yield a new game state
             yield (
                 cost,
-                (replace(c, np, topa), replace(rs, rno, replace(room, topi, 0))),
+                (
+                    replace(c, np, topa),
+                    replace(rs, rno, replace(room, topi, 0)),
+                ),
             )
 
 

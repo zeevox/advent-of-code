@@ -137,7 +137,11 @@ if __name__ == "__main__":
 
         for col in range(1, sidelength):
             grid[row][col] = adjacent_tile(*grid[row][col - 1], 1, tiles)
-    pattern = ["                  # ", "#    ##    ##    ###", " #  #  #  #  #  #   "]
+    pattern = [
+        "                  # ",
+        "#    ##    ##    ###",
+        " #  #  #  #  #  #   ",
+    ]
 
     rendered = render(grid)
     pattern_count = count_pattern(rendered, pattern)

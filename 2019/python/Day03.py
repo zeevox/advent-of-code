@@ -26,7 +26,14 @@ for w in ws:
             v += [(x, y := y - 1) for _ in range(n)]
     vs.append(v)
 
-print(min(map(lambda x: abs(x[0]) + abs(x[1]), intersects := set(vs[0]) & set(vs[1]))))
+print(
+    min(
+        map(
+            lambda x: abs(x[0]) + abs(x[1]),
+            intersects := set(vs[0]) & set(vs[1]),
+        )
+    )
+)
 print(
     min(
         {

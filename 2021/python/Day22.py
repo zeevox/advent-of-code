@@ -66,7 +66,14 @@ class Cuboid:
 
     def __hash__(self):
         return hash(
-            (self.x_min, self.x_max, self.y_min, self.y_max, self.z_min, self.z_max)
+            (
+                self.x_min,
+                self.x_max,
+                self.y_min,
+                self.y_max,
+                self.z_min,
+                self.z_max,
+            )
         )
 
 

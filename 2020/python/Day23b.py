@@ -31,14 +31,21 @@ def process_cups(s, n_cups=1000000):
 
 
 def move(current_cup):
-    next_three = [current_cup.next, current_cup.next.next, current_cup.next.next.next]
+    next_three = [
+        current_cup.next,
+        current_cup.next.next,
+        current_cup.next.next.next,
+    ]
 
     destination_cup = current_cup.previous_by_label
     while destination_cup in next_three or current_cup == destination_cup:
         destination_cup = destination_cup.previous_by_label
 
     current_cup.next = next_three[2].next
-    destination_cup.next, next_three[2].next = next_three[0], destination_cup.next
+    destination_cup.next, next_three[2].next = (
+        next_three[0],
+        destination_cup.next,
+    )
 
     return current_cup.next
 
