@@ -2,10 +2,13 @@
 
 import argparse
 from pathlib import Path
+from heapq import nlargest, nsmallest
+from typing import Collection
+
 
 def input_file() -> Path:
     parser = argparse.ArgumentParser()
-    parser.add_argument('filename', type=str, help="The filename of the puzzle input")
+    parser.add_argument("filename", type=str, help="The filename of the puzzle input")
     args = parser.parse_args()
     return Path(__file__).parent.parent / "inputs" / args.filename
 
@@ -33,3 +36,25 @@ def input_block_list():
 def filter_empty(li):
     """remove empty entries (e.g. when splitting a string)"""
     return list(filter(None, li))
+
+
+def nlargest(n: int, li: Collection, key=None) -> list:
+    """get the n largest items in a list in descending order"""
+    if n < 1:
+        return []
+    if n == 1:
+        return [max(li, key=key)]
+    if n > len(li) // 4:
+        return sorted(li, key=key, reverse=True)[:3]
+    return heapq.nlargest(n, li, key=key)
+
+
+def nsmallest(n: int, li: Collection, key=None) -> list:
+    """get the `n` smallest items in a list in ascending order"""
+    if n < 1:
+        return []
+    if n == 1:
+        return [min(li, key=key)]
+    if n > len(li) // 4:
+        return sorted(li, key=key)[:n]
+    return heapq.nsmallest(n, li, key=key)

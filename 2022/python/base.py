@@ -9,8 +9,6 @@ from sortedcontainers import SortedDict, SortedList, SortedSet
 
 import aoc_utils
 
-aoc_utils.SAMPLE = False
-
 
 def main():
     pass
