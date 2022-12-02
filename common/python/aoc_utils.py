@@ -1,7 +1,10 @@
 import argparse
+import operator
+import itertools
+import hashlib
 import heapq
 from pathlib import Path
-from typing import Collection, Iterable
+from typing import Any, Collection, Iterable
 
 
 def input_file() -> Path:
@@ -58,3 +61,42 @@ def nsmallest(n: int, li: Collection, key=None) -> list:
     if n > len(li) // 4:
         return list(sorted(li, key=key)[:n])
     return heapq.nsmallest(n, li, key=key)
+
+
+def md5sum(string: str) -> str:
+    return hashlib.md5(string.encode("utf-8")).hexdigest()
+
+
+def gen_rectangle_coords(corner1: tuple[int, int], corner2: tuple[int, int]):
+    """Yield all coordinates enclosed by a rectangle with corners corner1 and corner2"""
+    yield from itertools.product(
+        range(corner1[0], corner2[0] + 1), range(corner1[1], corner2[1] + 1)
+    )
+
+
+def print_grid_set_dict(
+    grid: dict[tuple[int, int], Any] | set[tuple[int, int]],
+    min_x: int | None = None,
+    max_x: int | None = None,
+    min_y: int | None = None,
+    max_y: int | None = None,
+    sep: str = "",
+    filled: str = "#",
+    empty: str = ".",
+) -> None:
+    coords = grid.keys() if isinstance(grid, dict) else grid
+    if min_x is None:
+        min_x = min(coords, key=operator.itemgetter(0))[0]
+    if max_x is None:
+        max_x = max(coords, key=operator.itemgetter(0))[0]
+    if min_y is None:
+        min_y = min(coords, key=operator.itemgetter(1))[1]
+    if max_y is None:
+        max_y = max(coords, key=operator.itemgetter(1))[1]
+    for y in range(min_y, max_y + 1):
+        for x in range(min_x, max_x + 1):
+            if (x, y) not in coords:
+                print(empty, end=sep)
+                continue
+            print(grid[(x, y)] if isinstance(grid, dict) else filled, end=sep)
+        print()
