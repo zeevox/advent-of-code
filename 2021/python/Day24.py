@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 
-from collections import Counter, defaultdict
-from sortedcontainers import SortedDict, SortedList, SortedSet
 import itertools
-import parse
-import aoc_utils
-from functools import lru_cache, partial, reduce
 import operator
+from collections import Counter, defaultdict
 from dataclasses import dataclass
+from functools import lru_cache, partial, reduce
 from typing import Callable
+
+import parse
+from sortedcontainers import SortedDict, SortedList, SortedSet
+
+import aoc_utils
 
 
 @dataclass(unsafe_hash=True)

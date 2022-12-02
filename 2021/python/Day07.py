@@ -17,10 +17,12 @@ def main(xs: list[int]):
     """
     return (
         min(sum(map(lambda y: abs(y - i), xs)) for i in range(max(xs))),
-        min(sum(map(lambda y: sum_one_to_n(abs(y - i)), xs)) for i in range(max(xs))),
+        min(
+            sum(map(lambda y: sum_one_to_n(abs(y - i)), xs))
+            for i in range(max(xs))
+        ),
     )
 
 
 if __name__ == "__main__":
-    print(main(list(map(int, "16,1,2,0,4,2,7,1,2,14".split(",")))))
-    print(main(list(map(int, aoc_utils.input_string_list()[0].split(",")))))
+    print(*main(list(map(int, aoc_utils.input_string().split(",")))), sep="\n")

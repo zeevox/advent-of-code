@@ -2,7 +2,6 @@
 
 import dataclasses
 import math
-from typing import Optional
 
 import aoc_utils
 
@@ -30,13 +29,12 @@ def hex2bin(s: str):
     return "".join(hex_lookup[c] for c in s)
 
 
-@dataclasses.dataclass
 class Packet:
     version: int
     type: int
-    value: Optional[int] = None
-    extra: Optional[str] = None
-    subpackets: Optional[list["Packet"]] = None
+    value: int
+    extra: str
+    subpackets: list["Packet"] = []
 
     def __init__(self, bin_str: str) -> None:
         self.version = int(bin_str[:3], 2)
@@ -45,6 +43,7 @@ class Packet:
 
         if self.type == 4:
             value = ""
+            i = 0
             for i in range(0, len(data), 5):
                 value += data[i + 1 : i + 5]
                 if data[i] == "0":
@@ -103,16 +102,22 @@ class Packet:
         elif self.type == 4:
             return self.value
         elif self.type == 5:
-            return int(self.subpackets[0].evaluate() > self.subpackets[1].evaluate())
+            return int(
+                self.subpackets[0].evaluate() > self.subpackets[1].evaluate()
+            )
         elif self.type == 6:
-            return int(self.subpackets[0].evaluate() < self.subpackets[1].evaluate())
+            return int(
+                self.subpackets[0].evaluate() < self.subpackets[1].evaluate()
+            )
         elif self.type == 7:
-            return int(self.subpackets[0].evaluate() == self.subpackets[1].evaluate())
+            return int(
+                self.subpackets[0].evaluate() == self.subpackets[1].evaluate()
+            )
+        raise ValueError("Cannot evaluate this expression")
 
 
 if __name__ == "__main__":
-    with aoc_utils.input() as f:
-        s = f.read().strip()
+    s = aoc_utils.input_string()
 
     root = Packet(hex2bin(s))
     print(root.version_sum())

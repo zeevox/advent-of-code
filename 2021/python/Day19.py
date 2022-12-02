@@ -92,18 +92,18 @@ if __name__ == "__main__":
                 or potential_scanner_no in fixed_scanners
             ):
                 continue
-            print(
-                f"Comparing scanners {fixed_scanner_no} and {potential_scanner_no}..."
-            )
+            # print(
+            #     f"Comparing scanners {fixed_scanner_no} and {potential_scanner_no}..."
+            # )
             for orientation, f_rotate in orientations.items():
                 transformed_potential_data = list(map(f_rotate, potential_data))
                 potential_deltas = dict(gen_deltas(transformed_potential_data))
                 common_deltas = fixed_deltas.keys() & potential_deltas.keys()
                 # I know they said 12 but 3 points is enough to triangulate
                 if len(common_deltas) >= 3:
-                    print(
-                        f"Found solution for scanner {potential_scanner_no} with orientation {orientation}. Common points: {len(common_deltas)}"
-                    )
+                    # print(
+                    #     f"Found solution for scanner {potential_scanner_no} with orientation {orientation}. Common points: {len(common_deltas)}"
+                    # )
 
                     q.put(potential_scanner_no)
                     # record the orientation of the scanner for beacon calculation later
@@ -124,7 +124,7 @@ if __name__ == "__main__":
                     )
                     break
 
-    print(fixed_scanners, scanner_locations)
+    # print(fixed_scanners, scanner_locations)
 
     beacons = set()
 
@@ -139,4 +139,10 @@ if __name__ == "__main__":
         vector1, vector2 = vectors
         return sum(abs(c1 - c2) for c1, c2 in zip(vector1, vector2))
 
-    print(max(map(manhattan, itertools.permutations(scanner_locations.values(), 2))))
+    print(
+        max(
+            map(
+                manhattan, itertools.permutations(scanner_locations.values(), 2)
+            )
+        )
+    )

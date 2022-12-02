@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
 import queue
-import aoc_utils
+
 import networkx as nx
+
+import aoc_utils
 
 
 def count_double_lowers(path: list[str]):

@@ -1,31 +1,21 @@
 #!/usr/bin/python3
 
-from collections import Counter, defaultdict
-from sortedcontainers import SortedDict, SortedList, SortedSet
-import itertools
-import parse
-import aoc_utils
-from functools import lru_cache, partial, reduce
+from functools import lru_cache
+from queue import PriorityQueue
 
-aoc_utils.SAMPLE = False
+import aoc_utils
 
 rps = ((31, 45), (33, 47), (35, 49), (37, 51))
 
 
 def n2s(c):
     """convert the integer to its amphipod meaning"""
-    if c == 0:
-        return "."
-    else:
-        return chr(c + ord("A") - 1)
+    return "." if c == 0 else chr(c + ord("A") - 1)
 
 
 def s2n(c):
     """convert amphipod representation to integer"""
-    if c == ".":
-        return 0
-    else:
-        return ord(c) - ord("A") + 1
+    return 0 if c == "." else ord(c) - ord("A") + 1
 
 
 def print_diagram(c, rs):
@@ -33,8 +23,12 @@ def print_diagram(c, rs):
     print("#############")
     m = tuple(map(n2s, c))
     print(f"#{''.join(m)}#")
-    print(f"###{n2s(rs[0][0])}#{n2s(rs[1][0])}#{n2s(rs[2][0])}#{n2s(rs[3][0])}###")
-    print(f"  #{n2s(rs[0][1])}#{n2s(rs[1][1])}#{n2s(rs[2][1])}#{n2s(rs[3][1])}#")
+    print(
+        f"###{n2s(rs[0][0])}#{n2s(rs[1][0])}#{n2s(rs[2][0])}#{n2s(rs[3][0])}###"
+    )
+    print(
+        f"  #{n2s(rs[0][1])}#{n2s(rs[1][1])}#{n2s(rs[2][1])}#{n2s(rs[3][1])}#"
+    )
     print("  ########")
 
 
@@ -42,7 +36,7 @@ rno_pos = range(2, 10, 2)
 
 
 def valid_room(a, r):
-    return r == (0, 0) or r == (0, a)
+    return r in [(0, 0), (0, a)]
 
 
 def replace(tup: tuple, index: int, value):
@@ -51,7 +45,7 @@ def replace(tup: tuple, index: int, value):
 
 def move_r2c_valid_pos(ri, c):
     # moving right
-    for p in range(ri + 1, len(c), 1):
+    for p in range(ri + 1, len(c)):
         if c[p] != 0:
             break
         if p in rno_pos:
@@ -141,9 +135,6 @@ def move(c, rs):
         yield next(move_c2r(c, rs))
     except StopIteration:
         yield from move_r2c(c, rs)
-
-
-from queue import PriorityQueue
 
 
 def moves(initial_data) -> int:

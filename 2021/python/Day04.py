@@ -1,19 +1,10 @@
 #!/usr/bin/python3
 
-import itertools
-import random
-import re
-import sys
-from collections import *
-from pprint import pprint
-from copy import deepcopy
-
-import operator
 import aoc_utils
 
 
-def main(numbers: list[int], boards: list[list[int]]):
-    turns = max(
+def main(numbers: list[int], boards: list[list[list[int]]], func=max):
+    turns = func(
         zip(
             range(len(boards)),
             map(lambda x: min_drawn_numbers_for_board(numbers, x), boards),
@@ -22,14 +13,13 @@ def main(numbers: list[int], boards: list[list[int]]):
     )
     # index of board, (index of row, number of turns required)
     board_index, (is_column, row_index, turns_required) = turns
-    print(turns)
     print(
         sum(map(sum, filter_minus_ones_from_board(boards[board_index])))
         * numbers[turns_required - 1]
     )
 
 
-def parse_board(board: str) -> list[int]:
+def parse_board(board: str) -> list[list[int]]:
     return list(map(lambda x: list(map(int, x.split())), board.split("\n")))
 
 
@@ -53,10 +43,12 @@ def min_drawn_numbers_for_board(
     for i, column in enumerate(zip(*board)):
         if sum(column) == -5:
             return True, i, index
+    raise ValueError(f"Nothing to return for board {board}")
 
 
 if __name__ == "__main__":
-    numbers_up, *boards_up = aoc_utils.input_block_list()
-    numbers = list(map(int, numbers_up.strip().split(",")))
-    boards = list(map(parse_board, boards_up))
-    main(numbers, boards)
+    for func in [min, max]:
+        numbers_up, *boards_up = aoc_utils.input_block_list()
+        numbers = list(map(int, numbers_up.strip().split(",")))
+        boards = list(map(parse_board, boards_up))
+        main(numbers, boards, func)

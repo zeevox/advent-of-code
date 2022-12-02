@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
-import aoc_utils
 from collections import Counter, defaultdict
+
 import more_itertools
-from pprint import pprint
+
+import aoc_utils
 
 
 def main(molecule: str, replacements):
@@ -29,7 +30,7 @@ def main(molecule: str, replacements):
     print(c[0][1] - c[-1][1])
 
 
-def main2(molecule: str, replacements: str, iterations=10):
+def main2(molecule: str, replacements: str, iterations: int = 10):
     rules = {}
     for rule in replacements.strip().splitlines():
         init, end = rule.split(" -> ")
@@ -83,5 +84,6 @@ def main2(molecule: str, replacements: str, iterations=10):
 
 
 if __name__ == "__main__":
-    main2(*aoc_utils.input_block_list(), 10)
-    main2(*aoc_utils.input_block_list(), 40)
+    a, b = aoc_utils.input_block_list()
+    main2(a, b, 10)
+    main2(a, b, 40)

@@ -3,6 +3,7 @@
 import functools
 import operator
 from typing import Generator
+
 import aoc_utils
 
 
@@ -27,7 +28,7 @@ def main(
     algorithm: dict[int, int],
     lit_pixels: set[tuple[int, int]],
     infinite_lit: bool,
-) -> set[tuple[int, int]]:
+) -> tuple[set[tuple[int, int]], bool]:
     min_x, max_x, min_y, max_y = bounds(lit_pixels)
     new_lit_pixels = set()
     for y in range(min_y - 2, max_y + 3):
@@ -56,7 +57,7 @@ def main(
 if __name__ == "__main__":
     algorithm_str, image_str = aoc_utils.input_block_list()
 
-    algorithm = dict((i, int(v == "#")) for i, v in enumerate(algorithm_str))
+    algorithm = {i: int(v == "#") for i, v in enumerate(algorithm_str)}
 
     lit_pixels = set()
     for y, row in enumerate(image_str.splitlines()):

@@ -1,10 +1,5 @@
 #!/usr/bin/python3
 
-from collections import *
-import itertools
-import random
-import re
-import sys
 import aoc_utils
 
 """matching bracket-pairs to avoid using if-else statements"""
@@ -43,7 +38,7 @@ def main(lines: list[str]):
             elif character in matches.values():
                 # if the character is a close bracket, pop the stack
                 if matches[stack.pop()] != character:
-                    print(f"Unmatched bracket: {character} at position {i}")
+                    # print(f"Unmatched bracket: {character} at position {i}")
                     points += points_map[character]
                     break
         # use the wonderful for-else construct for cases where the line is not corrupted

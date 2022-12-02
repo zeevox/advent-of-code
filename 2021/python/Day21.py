@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-import aoc_utils
+from parse import Result, parse
 
-from parse import parse
+import aoc_utils
 
 
 def main(a, b):
@@ -16,9 +16,9 @@ def main(a, b):
                 players_pos[i] = (players_pos[i] + rolled) % 10
                 rolls += 1
             players[i] += players_pos[i] + 1
-            print(
-                f"Player {i+1} moves to space {players_pos[i] + 1} for a total score of {players[i]}"
-            )
+            # print(
+            #     f"Player {i+1} moves to space {players_pos[i] + 1} for a total score of {players[i]}"
+            # )
             if players[i] >= 1000:
                 won = True
                 break
@@ -28,8 +28,11 @@ def main(a, b):
 if __name__ == "__main__":
     string = aoc_utils.input_string()
     # string = "Player 1 starting position: 4\nPlayer 2 starting position: 8"
-    a, b = parse(
+    result = parse(
         "Player 1 starting position: {:d}\nPlayer 2 starting position: {:d}",
         string,
     )
+    if not isinstance(result, Result):
+        raise ValueError("Invalid input data")
+    a, b = result
     main(a, b)

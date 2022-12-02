@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
 import itertools
-from pprint import pprint
-import re
 
 import aoc_utils
 
@@ -23,6 +21,7 @@ class Node:
         left, right = data
         self.left, self.right = Node(self, left), Node(self, right)
 
+    @staticmethod
     def from_string(string: str) -> "Node":
         return Node(None, eval(string))
 
@@ -33,7 +32,11 @@ class Node:
         return self.right is None
 
     def is_pair(self):
-        return (not self.is_leaf()) and self.left.is_leaf() and self.right.is_leaf()
+        return (
+            (not self.is_leaf())
+            and self.left.is_leaf()
+            and self.right.is_leaf()
+        )
 
     def get_root(self):
         return self if self.parent is None else self.parent.get_root()
@@ -115,10 +118,8 @@ def reduce_rule1(root):
             return False
 
         if not node.is_leaf():
-            stack.append(node.right)
-            stack.append(node.left)
-    else:
-        return True
+            stack.extend((node.right, node.left))
+    return True
 
 
 def reduce_rule2(root):
@@ -137,8 +138,7 @@ def reduce_rule2(root):
         if not node.is_leaf():
             stack.append(node.right)
             stack.append(node.left)
-    else:
-        return True
+    return True
 
 
 def fully_reduce(root):
@@ -152,25 +152,13 @@ def fully_reduce(root):
 if __name__ == "__main__":
     data = aoc_utils.input_string_list()
 
-    #     data = """[[[0,[5,8]],[[1,7],[9,6]]],[[4,[1,2]],[[1,4],2]]]
-    # [[[5,[2,8]],4],[5,[[9,9],0]]]
-    # [6,[[[6,2],[5,6]],[[7,6],[4,7]]]]
-    # [[[6,[0,7]],[0,9]],[4,[9,[9,0]]]]
-    # [[[7,[6,4]],[3,[1,3]]],[[[5,5],1],9]]
-    # [[6,[[7,3],[3,2]]],[[[3,8],[5,7]],4]]
-    # [[[[5,4],[7,7]],8],[[8,3],8]]
-    # [[9,3],[[9,9],[6,[4,9]]]]
-    # [[2,[[7,7],7]],[[5,8],[[9,3],[0,2]]]]
-    # [[[[5,2],5],[8,[3,7]]],[[5,[7,5]],[4,4]]]
-    # """.strip().splitlines()
-
     root = Node.from_string(data[0])
 
     for other in data[1:]:
         root += Node.from_string(other)
         fully_reduce(root)
 
-    print(root)
+    # print(root)
     print(root.magnitude())
 
     magnitudes = []

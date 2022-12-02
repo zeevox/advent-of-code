@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-import aoc_utils
 from string import ascii_lowercase
+
+import aoc_utils
 
 inputs = list(ascii_lowercase)
 

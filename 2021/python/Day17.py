@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import parse
-import itertools
 
 import aoc_utils
 
@@ -26,9 +25,11 @@ def gen_initial_vx(x_max: int):
 
 if __name__ == "__main__":
     data = aoc_utils.input_string()
-    x_min, x_max, y_min, y_max = parse.parse(
-        "target area: x={:d}..{:d}, y={:d}..{:d}", data
-    )
+    result = parse.parse("target area: x={:d}..{:d}, y={:d}..{:d}", data)
+    if not isinstance(result, parse.Result):
+        raise ValueError("Invalid input data")
+
+    x_min, x_max, y_min, y_max = result
 
     print("Part 1:", triangle(y_min))
 

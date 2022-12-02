@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
-from collections import *
-from functools import reduce
 import queue
+from functools import reduce
 
 import aoc_utils
 
@@ -18,7 +17,7 @@ def adjacent(point, size):
         yield (point[0], point[1] - 1)
 
 
-def print_grid(grid: list[list], points: set[tuple] = None) -> None:
+def print_grid(grid: list[list], points: set[tuple] | None = None) -> None:
     for y, row in enumerate(grid):
         for x, value in enumerate(row):
             if points is None or (x, y) in points:
@@ -51,9 +50,12 @@ def main(grid: list[list[int]]):
         while not q.empty():
             x, y = q.get()
             if all(
-                grid[adj[1]][adj[0]] >= grid[y][x]  # the weak inequality is critical!
+                grid[adj[1]][adj[0]]
+                >= grid[y][x]  # the weak inequality is critical!
                 for adj in adjacent((x, y), (len(grid[0]), len(grid)))
-                if adj not in visited and adj != (x, y) and grid[adj[1]][adj[0]] != 9
+                if adj not in visited
+                and adj != (x, y)
+                and grid[adj[1]][adj[0]] != 9
             ):
                 for adj in adjacent((x, y), (len(grid[0]), len(grid))):
                     if (
@@ -70,4 +72,4 @@ def main(grid: list[list[int]]):
 
 
 if __name__ == "__main__":
-    main(list(list(map(int, line)) for line in aoc_utils.input_string_list()))
+    main([list(map(int, line)) for line in aoc_utils.input_string_list()])

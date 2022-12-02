@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 import itertools
-import aoc_utils
 import queue
+
+import aoc_utils
 
 
 def get_neighbours(point, size):
@@ -48,14 +49,14 @@ def cycle(arr):
 
 
 if __name__ == "__main__":
-    grid = list(list(map(int, line)) for line in aoc_utils.input_string_list())
+    grid = [list(map(int, line)) for line in aoc_utils.input_string_list()]
     total = 0
     for _ in range(100):
         flashes, grid = cycle(grid)
         total += flashes
     print(f"{total} flashes after 100 steps")
 
-    grid = list(list(map(int, line)) for line in aoc_utils.input_string_list())
+    grid = [list(map(int, line)) for line in aoc_utils.input_string_list()]
     flashed = 0
     i = 0
     while flashed != 100:

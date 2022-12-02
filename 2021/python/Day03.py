@@ -1,22 +1,15 @@
 #!/usr/bin/python3
 
-from collections import *
-import itertools
-import random
-import re
-import sys
-import aoc_utils
 import operator
+
+import aoc_utils
 
 
 def common_count(xs: list[str], index: int):
     col = list(map(operator.itemgetter(index), xs))
     if col.count("1") > col.count("0"):
         return "1", "0"
-    if col.count("1") == col.count("0"):
-        return "X", "X"
-    else:
-        return "0", "1"
+    return ("X", "X") if col.count("1") == col.count("0") else ("0", "1")
 
 
 def main(xs: list[str]):

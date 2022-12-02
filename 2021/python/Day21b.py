@@ -2,6 +2,7 @@
 import functools
 
 import parse
+
 import aoc_utils
 
 outcomes = {3: 1, 4: 3, 5: 6, 6: 7, 7: 6, 8: 3, 9: 1}
@@ -31,8 +32,11 @@ def main(a_pos, b_pos, a_score=0, b_score=0):
 
 if __name__ == "__main__":
     string = aoc_utils.input_string()
-    a, b = parse.parse(
+    result = parse.parse(
         "Player 1 starting position: {:d}\nPlayer 2 starting position: {:d}",
         string,
     )
+    if not isinstance(result, parse.Result):
+        raise ValueError("Invalid input data")
+    a, b = result
     print(max(main(a - 1, b - 1)))

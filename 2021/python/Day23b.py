@@ -1,31 +1,21 @@
 #!/usr/bin/python3
 
-from collections import Counter, defaultdict
-from sortedcontainers import SortedDict, SortedList, SortedSet
-import itertools
-import parse
-import aoc_utils
-from functools import lru_cache, partial, reduce
+from functools import lru_cache
+from queue import PriorityQueue
 
-aoc_utils.SAMPLE = False
+import aoc_utils
 
 rps = ((31, 45), (33, 47), (35, 49), (37, 51))
 
 
 def n2s(c):
     """convert the integer to its amphipod meaning"""
-    if c == 0:
-        return "."
-    else:
-        return chr(c + ord("A") - 1)
+    return "." if c == 0 else chr(c + ord("A") - 1)
 
 
 def s2n(c):
     """convert amphipod representation to integer"""
-    if c == ".":
-        return 0
-    else:
-        return ord(c) - ord("A") + 1
+    return 0 if c == "." else ord(c) - ord("A") + 1
 
 
 def print_diagram(c, rs):
@@ -33,9 +23,13 @@ def print_diagram(c, rs):
     print("#############")
     m = tuple(map(n2s, c))
     print(f"#{''.join(m)}#")
-    print(f"###{n2s(rs[0][0])}#{n2s(rs[1][0])}#{n2s(rs[2][0])}#{n2s(rs[3][0])}###")
+    print(
+        f"###{n2s(rs[0][0])}#{n2s(rs[1][0])}#{n2s(rs[2][0])}#{n2s(rs[3][0])}###"
+    )
     for i in range(1, len(rs[0])):
-        print(f"  #{n2s(rs[0][i])}#{n2s(rs[1][i])}#{n2s(rs[2][i])}#{n2s(rs[3][i])}#")
+        print(
+            f"  #{n2s(rs[0][i])}#{n2s(rs[1][i])}#{n2s(rs[2][i])}#{n2s(rs[3][i])}#"
+        )
     print("  #########")
 
 
@@ -43,7 +37,7 @@ rno_pos = range(2, 10, 2)
 
 
 def valid_room(a, r):
-    return all(m == 0 or m == a for m in r)
+    return all(m in [0, a] for m in r)
 
 
 def replace(tup: tuple, index: int, value):
@@ -52,7 +46,7 @@ def replace(tup: tuple, index: int, value):
 
 def move_r2c_valid_pos(ri, c):
     # moving right
-    for p in range(ri + 1, len(c), 1):
+    for p in range(ri + 1, len(c)):
         if c[p] != 0:
             break
         if p in rno_pos:
@@ -68,12 +62,7 @@ def move_r2c_valid_pos(ri, c):
 
 
 def top_amphi(room):
-    for i, a in enumerate(room):
-        if not a:
-            continue
-        return i, a
-    else:
-        return None, None
+    return next(((i, a) for i, a in enumerate(room) if a), (None, None))
 
 
 @lru_cache()
@@ -146,9 +135,6 @@ def move(c, rs):
         yield from move_r2c(c, rs)
 
 
-from queue import PriorityQueue
-
-
 def moves(initial_data) -> int:
     q = PriorityQueue()
     q.put((0, initial_data))
@@ -168,14 +154,13 @@ def moves(initial_data) -> int:
 
 def main(diagram: str) -> int:
     c = tuple(s2n(diagram[p]) for p in range(15, 26))
-    rbs = list(list(s2n(diagram[p]) for p in r) for r in rps)
+    rbs = [[s2n(diagram[p]) for p in r] for r in rps]
     rs = (
         (rbs[0][0], 4, 4, rbs[0][1]),
         (rbs[1][0], 3, 2, rbs[1][1]),
         (rbs[2][0], 2, 1, rbs[2][1]),
         (rbs[3][0], 1, 3, rbs[3][1]),
     )
-    print_diagram(c, rs)
     return moves((c, rs))
 
 

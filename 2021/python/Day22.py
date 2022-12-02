@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-from collections import Counter, defaultdict
-import itertools
-import parse
-import aoc_utils
-
 import dataclasses
+import itertools
+from collections import Counter
+
+import parse
+
+import aoc_utils
 
 
 def parse_line(s: str):
@@ -15,16 +16,18 @@ def parse_line(s: str):
     return state == "on", x_min, x_max, y_min, y_max, z_min, z_max
 
 
-def part1(string: str):
+def part1(string: list[str]):
     lit = set()
     for switch_on, xl, xu, yl, yu, zl, zu in map(parse_line, string):
-        for xi in range(max(xl, -50), min(xu, 50) + 1):
-            for yi in range(max(yl, -50), min(yu, 50) + 1):
-                for zi in range(max(zl, -50), min(zu, 50) + 1):
-                    if switch_on:
-                        lit.add((xi, yi, zi))
-                    else:
-                        lit.discard((xi, yi, zi))
+        for xi, yi, zi in itertools.product(
+            range(max(xl, -50), min(xu, 50) + 1),
+            range(max(yl, -50), min(yu, 50) + 1),
+            range(max(zl, -50), min(zu, 50) + 1),
+        ):
+            if switch_on:
+                lit.add((xi, yi, zi))
+            else:
+                lit.discard((xi, yi, zi))
     return len(lit)
 
 
@@ -77,7 +80,7 @@ class Cuboid:
         )
 
 
-def part2(string: str) -> int:
+def part2(string: list[str]) -> int:
     cuboids = Counter()
     for switch_on, *cuboid in map(parse_line, string):
         cuboid = Cuboid(*cuboid)

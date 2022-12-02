@@ -1,11 +1,5 @@
 #!/usr/bin/python3
 
-import itertools
-import random
-import re
-import sys
-from collections import *
-
 import aoc_utils
 
 

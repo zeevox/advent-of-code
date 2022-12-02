@@ -1,4 +1,5 @@
 import parse
+
 import aoc_utils
 
 template = "inp w\nmul x 0\nadd x z\nmod x 26\ndiv z {}\nadd x {}\neql x w\neql x 0\nmul y 0\nadd y 25\nmul y x\nadd y {}\nmul z y\nmul y 0\nadd y w\nadd y {}\nmul y x\nadd z y"

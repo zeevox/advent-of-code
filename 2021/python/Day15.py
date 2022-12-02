@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
-import aoc_utils
-import networkx as nx
 import math
+
+import networkx as nx
+
+import aoc_utils
 
 ###
 # reuse from day 9

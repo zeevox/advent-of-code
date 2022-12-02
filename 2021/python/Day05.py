@@ -2,7 +2,7 @@
 
 import operator
 import re
-from collections import *
+from collections import defaultdict
 
 import aoc_utils
 
