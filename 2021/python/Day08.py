@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from typing import Callable, Iterable
 
 import aoc_utils

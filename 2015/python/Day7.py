@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from functools import lru_cache
 
 with open("../inputs/7.txt", "r") as file:

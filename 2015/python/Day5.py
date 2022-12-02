@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 with open("../inputs/5.txt", "r") as file:
     strings = list(map(str.strip, file.readlines()))
 

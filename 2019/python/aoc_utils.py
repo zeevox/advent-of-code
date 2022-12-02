@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import os
 from __main__ import __file__
 

@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 with open("../inputs/1.txt", "r") as inp_file:
     puzzle_input = inp_file.read()
 

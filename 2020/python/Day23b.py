@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-
-
 class cup:
     def __init__(self, label):
         self.label = int(label)

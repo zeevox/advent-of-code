@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from collections import *
 import itertools
 import typing

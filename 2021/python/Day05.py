@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import operator
 import re
 from collections import defaultdict

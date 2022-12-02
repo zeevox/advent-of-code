@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from collections import Counter
 
 with open("2016/inputs/06.txt", "r") as f:

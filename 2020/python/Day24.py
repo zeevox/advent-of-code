@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from copy import deepcopy
 from collections import *
 import aoc_utils

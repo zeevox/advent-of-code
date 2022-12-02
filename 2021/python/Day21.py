@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 from parse import Result, parse
 
 import aoc_utils

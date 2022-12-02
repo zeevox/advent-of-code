@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import itertools
 
 with open("../inputs/6.txt", "r") as file:

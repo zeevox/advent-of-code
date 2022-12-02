@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from collections import Counter
 from operator import itemgetter
 from string import ascii_lowercase

@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import aoc_utils
 
 """matching bracket-pairs to avoid using if-else statements"""

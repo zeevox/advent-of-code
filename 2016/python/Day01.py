@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 with open("2016/inputs/01.txt", "r") as f:
     instructions = f.read().split(", ")
 

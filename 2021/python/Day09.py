@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import queue
 from functools import reduce
 
