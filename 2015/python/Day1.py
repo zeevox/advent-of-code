@@ -9,7 +9,7 @@ def maina():
     for bracket in puzzle_input:
         if bracket == "(":
             floor += 1
-        if bracket == ")":
+        elif bracket == ")":
             floor -= 1
     return floor
 
@@ -21,7 +21,7 @@ def mainb():
             return index
         if bracket == "(":
             floor += 1
-        if bracket == ")":
+        elif bracket == ")":
             floor -= 1
 
 

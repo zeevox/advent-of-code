@@ -23,13 +23,19 @@ def parse_coords(coord_string: str) -> tuple[int, int]:
 for instruction in instructions:
     match instruction.split():
         case ["turn", "on", corner1, "through", corner2]:
-            for coord in get_coordinates(parse_coords(corner1), parse_coords(corner2)):
+            for coord in get_coordinates(
+                parse_coords(corner1), parse_coords(corner2)
+            ):
                 lights[coord] += 1
         case ["toggle", corner1, "through", corner2]:
-            for coord in get_coordinates(parse_coords(corner1), parse_coords(corner2)):
+            for coord in get_coordinates(
+                parse_coords(corner1), parse_coords(corner2)
+            ):
                 lights[coord] += 2
         case ["turn", "off", corner1, "through", corner2]:
-            for coord in get_coordinates(parse_coords(corner1), parse_coords(corner2)):
+            for coord in get_coordinates(
+                parse_coords(corner1), parse_coords(corner2)
+            ):
                 lights[coord] = max(lights[coord] - 1, 0)
 
 print(sum(lights.values()))

@@ -28,7 +28,9 @@ for replacement in replacements:
         if input_molecule[i:].startswith(initial):
             # combine the first half, replacement, the rest of the molecule
             replaced_molecule = (
-                input_molecule[:i] + final + input_molecule[i:].removeprefix(initial)
+                input_molecule[:i]
+                + final
+                + input_molecule[i:].removeprefix(initial)
             )
             # set-like logic to avoid duplicates
             if replaced_molecule not in possible_replaced_molecules:
@@ -70,7 +72,9 @@ while input_molecule != "e":
         initial, final = replacement.split(" => ")
         for i in all_indices(input_molecule, final):
             possible_shorter_molecules.add(
-                input_molecule[:i] + initial + input_molecule[i:].removeprefix(final)
+                input_molecule[:i]
+                + initial
+                + input_molecule[i:].removeprefix(final)
             )
     input_molecule = min(possible_shorter_molecules, key=len)
 
@@ -79,10 +83,10 @@ print(iterations)
 
 # So here is an incredibly hacky solution for Part 2 that will always work
 # (assuming the input is valid).
-number_of_uppercase_letters = 0
-for character in input_molecule:
-    if character.isupper():
-        number_of_uppercase_letters += 1
+number_of_uppercase_letters = sum(
+    1 for character in input_molecule if character.isupper()
+)
+
 print(
     number_of_uppercase_letters
     - input_molecule.count("Rn")

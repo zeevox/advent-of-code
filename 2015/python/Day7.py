@@ -27,7 +27,7 @@ def process(wire: str) -> int:
             return process(var1) >> process(var2)
         case ["NOT", var]:
             return ~process(var)
-    raise Exception(f"uncaught case for {wire}")
+    raise ValueError(f"uncaught case for {wire}")
 
 
 if __name__ == "__main__":

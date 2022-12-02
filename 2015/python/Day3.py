@@ -21,25 +21,18 @@ def process(command: str, position: tuple[int, int]) -> tuple[int, int]:
 
 ### Part 1
 
-houses: set[tuple[int, int]] = set()
 position: tuple[int, int] = (0, 0)
-houses.add(position)
-
+houses: set[tuple[int, int]] = {position}
 for command in puzzle_input:
     position: tuple[int, int] = process(command, position)
     houses.add(position)
 
 print(len(houses))
 
-### Part 2
-
-houses: set[tuple[int, int]] = set()
 position_santa: tuple[int, int] = (0, 0)
 position_robot: tuple[int, int] = (0, 0)
 
-houses.add(position_santa)
-houses.add(position_robot)  # for completeness
-
+houses: set[tuple[int, int]] = {position_santa, position_robot}
 for count, command in enumerate(puzzle_input):
     if count % 2 == 0:
         position_santa = process(command, position_santa)

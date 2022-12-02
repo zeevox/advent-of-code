@@ -12,17 +12,12 @@ def is_vowel(char) -> bool:
 
 
 def nice(string: str) -> bool:
-    for ban in banned:
-        if ban in string:
-            return False
-
-    if len(list(filter(is_vowel, string))) < 3:
-        return False
-
-    for letter in set(string):
-        if (letter + letter) in string:
-            return True
-    return False
+    return next(
+        (False for ban in banned if ban in string),
+        False
+        if len(list(filter(is_vowel, string))) < 3
+        else any((letter + letter) in string for letter in set(string)),
+    )
 
 
 def windowed(string: str, width: int):
@@ -31,17 +26,14 @@ def windowed(string: str, width: int):
 
 
 def rule4(string: str) -> bool:
-    for pre, window, post in windowed(string, 2):
-        if window in pre or window in post:
-            return True
-    return False
+    return any(
+        window in pre or window in post
+        for pre, window, post in windowed(string, 2)
+    )
 
 
 def rule5(string: str) -> bool:
-    for _, (a, _, b), _ in windowed(string, 3):
-        if a == b:
-            return True
-    return False
+    return any(a == b for _, (a, _, b), _ in windowed(string, 3))
 
 
 def nice2(string: str) -> bool:
