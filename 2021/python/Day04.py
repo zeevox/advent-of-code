@@ -1,4 +1,4 @@
-import aoc_utils
+from aoc_utils import *
 
 
 def main(numbers: list[int], boards: list[list[list[int]]], func=max):
@@ -46,7 +46,7 @@ def min_drawn_numbers_for_board(
 
 if __name__ == "__main__":
     for func in [min, max]:
-        numbers_up, *boards_up = aoc_utils.input_block_list()
+        numbers_up, *boards_up = input_block_list()
         numbers = list(map(int, numbers_up.strip().split(",")))
         boards = list(map(parse_board, boards_up))
         main(numbers, boards, func)

@@ -1,5 +1,6 @@
-with open("2016/inputs/01.txt", "r") as f:
-    instructions = f.read().split(", ")
+from aoc_utils import *
+
+instructions = input_string().split(", ")
 
 x = y = rot = 0
 visited = {(0, 0)}

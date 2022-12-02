@@ -1,8 +1,8 @@
-import aoc_utils
+from aoc_utils import *
 
 
 def part1():
-    xs = aoc_utils.input_string_list()
+    xs = input_string_list()
     x, z = 0, 0
     for i in xs:
         c, d = i.split()
@@ -16,7 +16,7 @@ def part1():
 
 
 def part2():
-    xs = aoc_utils.input_string_list()
+    xs = input_string_list()
     x, z, aim = 0, 0, 0
     for i in xs:
         c, d = i.split()

@@ -1,8 +1,8 @@
 import itertools
 from collections import defaultdict
+from aoc_utils import *
 
-with open("../inputs/6.txt", "r") as file:
-    instructions = file.readlines()
+instructions = input_string_list()
 
 lights: defaultdict[tuple[int, int], int] = defaultdict(int)
 

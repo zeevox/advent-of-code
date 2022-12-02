@@ -1,6 +1,6 @@
 import operator
 
-import aoc_utils
+from aoc_utils import *
 
 
 def common_count(xs: list[str], index: int):
@@ -42,4 +42,4 @@ def main(xs: list[str]):
 
 
 if __name__ == "__main__":
-    main(aoc_utils.input_string_list())
+    main(input_string_list())

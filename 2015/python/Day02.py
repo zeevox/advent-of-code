@@ -1,13 +1,14 @@
 import itertools
 import math
 
+from aoc_utils import *
+
 
 def parse(box: str) -> tuple[int, int, int]:
     return tuple(map(int, box.split("x")))
 
 
-with open("../inputs/2.txt", "r") as input_file:
-    puzzle_input = [parse(line) for line in input_file.readlines()]
+puzzle_input = [parse(line) for line in input_string_list()]
 
 paper = 0
 ribbon = 0

@@ -1,5 +1,6 @@
-with open("../inputs/3.txt", "r") as file:
-    puzzle_input = file.read()
+from aoc_utils import *
+
+puzzle_input = input_string()
 
 
 def process(command: str, position: tuple[int, int]) -> tuple[int, int]:

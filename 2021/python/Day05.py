@@ -1,18 +1,7 @@
-import operator
 import re
 from collections import defaultdict
 
-import aoc_utils
-
-
-def print_grid(grid: dict[tuple[int, int], int]) -> None:
-    for y in range(max(grid, key=operator.itemgetter(1))[1] + 1):
-        for x in range(max(grid, key=operator.itemgetter(0))[0] + 1):
-            if grid[(x, y)] == 0:
-                print(".", end="")
-            else:
-                print(grid[(x, y)], end="")
-        print()
+from aoc_utils import *
 
 
 def main(lines: list[str]) -> None:
@@ -50,4 +39,4 @@ def main(lines: list[str]) -> None:
 
 
 if __name__ == "__main__":
-    main(aoc_utils.input_string_list())
+    main(input_string_list())

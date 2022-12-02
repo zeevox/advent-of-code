@@ -1,7 +1,8 @@
 from functools import lru_cache
 
-with open("../inputs/7.txt", "r") as file:
-    instructions = file.readlines()
+from aoc_utils import *
+
+instructions = input_string_list()
 
 
 wires = {out: command for *command, _, out in map(str.split, instructions)}
