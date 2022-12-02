@@ -98,7 +98,8 @@ def reduce_rule1(root):
     while stack:
         node = stack.pop()
 
-        # If any pair is nested inside four pairs, the leftmost such pair explodes
+        # If any pair is nested inside four pairs, the leftmost such pair
+        # explodes
         if node.is_pair() and node.depth() > 4:
             # add to both sides
             adj = next_left(node)
@@ -126,7 +127,8 @@ def reduce_rule2(root):
     while stack:
         node = stack.pop()
 
-        # If any regular number is 10 or greater, the leftmost such regular number splits.
+        # If any regular number is 10 or greater, the leftmost such regular
+        # number splits.
         if node.is_leaf() and node.left >= 10:
             value = node.left
             node.left = Node(node, value // 2)

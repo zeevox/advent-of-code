@@ -28,7 +28,8 @@ def route_possible(start_colour, end_colour, di):
             return True
         if "no other bags" not in ", ".join(bag[1:]):
             for containable in bag[1:]:
-                # this regex gets the bag colour, which is always two words long.
+                # this regex gets the bag colour, which is always two words
+                # long.
                 if match := re.search(r"(?i)\d* (\w+ \w+).*", containable):
                     q.put([match[1]] + di[match[1]])
     return False

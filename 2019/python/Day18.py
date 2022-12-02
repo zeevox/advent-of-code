@@ -35,7 +35,8 @@ def get_neighbours2(
 
     ndim = len(p)
 
-    # generate an (m, ndims) array containing all strings over the alphabet {0, 1, 2}:
+    # generate an (m, ndims) array containing all strings over the alphabet
+    # {0, 1, 2}:
     offset_idx = np.indices((3,) * ndim).reshape(ndim, -1).T
 
     # use these to index into np.array([-1, 0, 1]) to get offsets

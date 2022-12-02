@@ -14,7 +14,8 @@ def get_cups(s, maxlen):
 
 def process_cups(s, n_cups=1000000):
 
-    # perhaps not the most efficient way of generating a linked list, but it works
+    # perhaps not the most efficient way of generating a linked list, but it
+    # works
     cups = list(get_cups(s, n_cups))
     cups_by_value = sorted(cups, key=lambda x: x.label)
 

@@ -39,7 +39,8 @@ def main(lines: list[str]):
                     # print(f"Unmatched bracket: {character} at position {i}")
                     points += points_map[character]
                     break
-        # use the wonderful for-else construct for cases where the line is not corrupted
+        # use the wonderful for-else construct for cases where the line is not
+        # corrupted
         else:
             score = 0
             for unmatched_bracket in stack[::-1]:

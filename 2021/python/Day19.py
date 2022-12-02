@@ -6,8 +6,8 @@ from parse import parse
 import aoc_utils
 
 """
-I spent way too long faffing around with rotating the 
-vector so I ended up writing a rather manual and ugly 
+I spent way too long faffing around with rotating the
+vector so I ended up writing a rather manual and ugly
 function to generate this lookup table for me instead
 """
 orientations = {
@@ -104,14 +104,16 @@ if __name__ == "__main__":
                     # )
 
                     q.put(potential_scanner_no)
-                    # record the orientation of the scanner for beacon calculation later
+                    # record the orientation of the scanner for beacon
+                    # calculation later
                     fixed_scanners[potential_scanner_no] = orientation
 
                     # any of the pairs will (read: should) give the same result
                     random_delta = common_deltas.pop()
                     # o is the position vector of the current 'fixed' scanner we are operating on
                     # i is the vector from the scanner to the first beacon of the delta pair
-                    # j is the vector from the newly discovered scanner to the same beacon
+                    # j is the vector from the newly discovered scanner to the
+                    # same beacon
                     scanner_locations[potential_scanner_no] = tuple(
                         o + i - j
                         for o, i, j in zip(

@@ -17,7 +17,7 @@ def process(command: str, position: tuple[int, int]) -> tuple[int, int]:
     return (0, 0)
 
 
-### Part 1
+# Part 1
 
 position: tuple[int, int] = (0, 0)
 houses: set[tuple[int, int]] = {position}

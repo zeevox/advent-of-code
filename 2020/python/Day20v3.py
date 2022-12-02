@@ -127,8 +127,8 @@ if __name__ == "__main__":
                 adjacent = list(adjacent_tiles(corner, tiles[corner], tiles))
                 if (
                     adjacent[0] == False
-                    and adjacent[1] != False
-                    and adjacent[2] != False
+                    and adjacent[1]
+                    and adjacent[2]
                     and adjacent[3] == False
                 ):
                     grid[0][0] = (corner, tiles[corner])

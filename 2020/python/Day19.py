@@ -30,7 +30,8 @@ def eval(s, part2=False):
                 # could be 42 31 or 42 42 31 31 or 42 42 42 31 31 31 31 etc...
                 # most importantly same number of 42s and 31s
                 # assume no more than ten of them, just OR each of the options with a for loop
-                # because lookbehinds make getting the NUMBER of matches of the previous one difficult
+                # because lookbehinds make getting the NUMBER of matches of the
+                # previous one difficult
                 cgroup += (
                     "("
                     + "|".join(

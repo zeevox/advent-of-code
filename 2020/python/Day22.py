@@ -12,7 +12,8 @@ def parse(inp):
 # calculate the score of a given deck
 def score(deck):
     # the bottom card in their deck is worth the value of the card multiplied by 1,
-    # the second-from-the-bottom card is worth the value of the card multiplied by 2, and so on.
+    # the second-from-the-bottom card is worth the value of the card
+    # multiplied by 2, and so on.
     return sum(i * deck.pop(0) for i in range(len(deck), 0, -1))
 
 
@@ -21,7 +22,8 @@ def combat_round(deck1, deck2, game, out=False, game_count=1):
         print(f"\n-- NEW ROUND (GAME {game_count}) --")
 
     # if there was a previous round in this game that had exactly the same cards in the
-    # same order in the same players' decks, the game instantly ends in a win for player 1
+    # same order in the same players' decks, the game instantly ends in a win
+    # for player 1
     if game is not None and (tuple(deck1), tuple(deck2)) in game:
         deck2 = []
     # otherwise, this round's cards must be in a new configuration
@@ -32,7 +34,8 @@ def combat_round(deck1, deck2, game, out=False, game_count=1):
         if out:
             print(f"{deck1=}\n{deck2=}")
 
-        # the players begin the round by each drawing the top card of their deck as normal.
+        # the players begin the round by each drawing the top card of their
+        # deck as normal.
         card1, card2 = deck1.pop(0), deck2.pop(0)
 
         if out:
