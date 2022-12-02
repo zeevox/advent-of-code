@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import aoc_utils
 
 aoc_utils.SAMPLE = False

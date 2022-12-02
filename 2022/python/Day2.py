@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import aoc_utils
 
 scoring = {"X": 1, "Y": 2, "Z": 3}

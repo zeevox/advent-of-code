@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import itertools
 from collections import Counter, defaultdict
 from functools import lru_cache, partial, reduce
