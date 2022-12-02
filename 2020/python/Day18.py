@@ -18,24 +18,21 @@ def evaluate(s, part_two=False):
         elif c == "(":
             os.append(c)
         elif c == ")":
-            while len(os) > 0 and os[-1] != "(":
+            while os and os[-1] != "(":
                 vs.append(execute(os.pop(), vs.pop(), vs.pop()))
             os.pop()
-        elif c == "*" or c == "+":
-            while len(os) > 0 and has_precedence(os[-1], c, part_two):
+        elif c in ["*", "+"]:
+            while os and has_precedence(os[-1], c, part_two):
                 vs.append(execute(os.pop(), vs.pop(), vs.pop()))
-            else:
-                os.append(c)
-    while len(os) > 0:
+            os.append(c)
+    while os:
         vs.append(execute(os.pop(), vs.pop(), vs.pop()))
     return vs[0]
 
 
 # whether o1 has greater than or equal precedence as o2
 def has_precedence(o1, o2, part_two=False):
-    if (part_two and o1 == "*" and o2 == "+") or o1 == "(" or o1 == ")":
-        return False
-    return True
+    return (not part_two or o1 != "*" or o2 != "+") and o1 != "(" and o1 != ")"
 
 
 def execute(o, a, b):
@@ -55,12 +52,8 @@ def execute(o, a, b):
 
 inp = aoc_utils.input().readlines()
 
-s = 0
-for line in inp:
-    s += evaluate(line)
+s = sum(evaluate(line) for line in inp)
 print(s)
 
-s = 0
-for line in inp:
-    s += evaluate(line, True)
+s = sum(evaluate(line, True) for line in inp)
 print(s)

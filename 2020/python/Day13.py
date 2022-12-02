@@ -31,9 +31,8 @@ https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode
 def egcd(a, b):
     if a == 0:
         return (b, 0, 1)
-    else:
-        g, y, x = egcd(b % a, a)
-        return (g, x - (b // a) * y, y)
+    g, y, x = egcd(b % a, a)
+    return (g, x - (b // a) * y, y)
 
 
 """
@@ -57,7 +56,8 @@ ts, buses = int((inp := aoc_utils.input_string_list())[0]), list(
     map(int, filter(lambda x: x != "x", inp[1].split(",")))
 )
 print(
-    (b := min(buses, key=lambda x: ((ts // x) + 1) * x)) * ((((ts // b) + 1) * b) - ts)
+    (b := min(buses, key=lambda x: ((ts // x) + 1) * x))
+    * ((((ts // b) + 1) * b) - ts)
 )
 
 #############

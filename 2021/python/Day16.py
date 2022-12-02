@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-import dataclasses
 import math
 
 import aoc_utils

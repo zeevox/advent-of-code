@@ -9,16 +9,14 @@ import re
 import aoc_utils
 
 inp = aoc_utils.input_string_list()
-rules = {(x := re.split(": |-| or ", s))[0]: list(map(int, x[1:])) for s in inp[:20]}
+rules = {
+    (x := re.split(": |-| or ", s))[0]: list(map(int, x[1:])) for s in inp[:20]
+}
 # print(rules)
 
 
 def valid_any(n):
-    for rule in rules.values():
-        #        print(n, rule)
-        if valid(n, rule):
-            return True
-    return False
+    return any(valid(n, rule) for rule in rules.values())
 
 
 def valid(n, rule):
@@ -50,8 +48,8 @@ for n, rule in rules.items():
 # print(cols)
 
 fixed = []
-while not len(fixed) == len(cols):
-    for n, col in cols.items():
+while len(fixed) != len(cols):
+    for col in cols.values():
         if len(col) == 1:
             if col[0] not in fixed:
                 fixed.append(col[0])

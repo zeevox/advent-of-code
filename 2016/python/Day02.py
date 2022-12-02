@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-with open(f"2016/inputs/02.txt", "r") as f:
+with open("2016/inputs/02.txt", "r") as f:
     instructions = f.read().splitlines()
 
 start = 5
@@ -31,26 +31,22 @@ sx, sy = 0, 2
 code = ""
 for line in instructions:
     for command in line:
-        if command == "U":
-            px, py = sx, sy - 1
-            if py < 0 or keypad[py][px] is None:
-                continue
-            sy = py
-        elif command == "D":
+        if command == "D":
             px, py = sx, sy + 1
-            if py > 4 or keypad[py][px] is None:
-                continue
-            sy = py
+            if py <= 4 and keypad[py][px] is not None:
+                sy = py
         elif command == "L":
             px, py = sx - 1, sy
-            if px < 0 or keypad[py][px] is None:
-                continue
-            sx = px
+            if px >= 0 and keypad[py][px] is not None:
+                sx = px
         elif command == "R":
             px, py = sx + 1, sy
-            if px > 4 or keypad[py][px] is None:
-                continue
-            sx = px
+            if px <= 4 and keypad[py][px] is not None:
+                sx = px
+        elif command == "U":
+            px, py = sx, sy - 1
+            if py >= 0 and keypad[py][px] is not None:
+                sy = py
     code += keypad[sy][sx]
 
 print(code)

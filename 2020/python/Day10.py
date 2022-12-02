@@ -9,9 +9,10 @@ import aoc_utils
 
 xs = [0] + sorted(aoc_utils.input_int_list())
 
-di = {}
-for i, x in enumerate(xs):
-    di[x] = [x + j for j in [1, 2, 3] if x + j in xs[i + 1 : i + 4]]
+di = {
+    x: [x + j for j in [1, 2, 3] if x + j in xs[i + 1 : i + 4]]
+    for i, x in enumerate(xs)
+}
 
 e = max(di.keys())
 

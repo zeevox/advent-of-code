@@ -22,11 +22,7 @@ def main(rs):
             if ors[y][x] == "#" and ajs.count("#") >= 4:
                 rs[y][x] = "L"
                 continue
-    if rs == ors:
-        return rs
-    else:
-        # print(*rs, sep="\n")
-        return main(rs)
+    return rs if rs == ors else main(rs)
 
 
 def adj_seats(x, y, rs):

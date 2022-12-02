@@ -23,7 +23,7 @@ for i in ins:
         wx -= n
     elif (c == "L" and n == 90) or (c == "R" and n == 270):
         wx, wy = -wy, wx
-    elif (c == "L" or c == "R") and n == 180:
+    elif c in ["L", "R"] and n == 180:
         wx, wy = -wx, -wy
     elif (c == "L" and n == 270) or (c == "R" and n == 90):
         wx, wy = wy, -wx

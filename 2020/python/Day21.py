@@ -46,11 +46,10 @@ print(
 )
 
 print("== Dangerous ingredient list ==")
-while not all(len(ingredients) == 1 for ingredients in database.values()):
+while any(len(ingredients) != 1 for ingredients in database.values()):
     for allergen, ingredients in database.items():
         if len(ingredients) == 1:
-            for other_allergen in database.keys():
-                if allergen is other_allergen:
-                    continue
-                database[other_allergen] -= ingredients
+            for other_allergen, value in database.items():
+                if allergen is not other_allergen:
+                    value -= ingredients
 print(",".join(list(database[k])[0] for k in sorted(database)))

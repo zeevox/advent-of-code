@@ -12,10 +12,14 @@ def main(target):
     for x in aoc_utils.input_int_list():
         if x < target:
             array[x] = True
-    for i in range(target):
-        if array[i] and array[target - i]:
-            return i, (target - i)
-    return []
+    return next(
+        (
+            (i, target - i)
+            for i in range(target)
+            if array[i] and array[target - i]
+        ),
+        [],
+    )
 
 
 def three():

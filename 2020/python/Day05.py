@@ -13,7 +13,10 @@ def main():
     li = [False] * (2**10)
     for seat in inp:
         seat = (
-            seat.replace("B", "1").replace("F", "0").replace("R", "1").replace("L", "0")
+            seat.replace("B", "1")
+            .replace("F", "0")
+            .replace("R", "1")
+            .replace("L", "0")
         )
         li[int(seat, 2)] = True
     max = 0

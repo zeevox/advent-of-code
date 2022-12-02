@@ -2,7 +2,7 @@
 
 from collections import Counter
 
-with open(f"2016/inputs/06.txt", "r") as f:
+with open("2016/inputs/06.txt", "r") as f:
     data = f.readlines()
 
 for col in zip(*data):

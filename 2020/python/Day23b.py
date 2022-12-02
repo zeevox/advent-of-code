@@ -51,7 +51,7 @@ def move(current_cup):
 
 
 current_cup = process_cups("318946572")
-for i in range(10000000):
+for _ in range(10000000):
     current_cup = move(current_cup)
 
 while current_cup.label != 1:

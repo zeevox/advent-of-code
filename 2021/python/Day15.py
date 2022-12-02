@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import math
-
 import networkx as nx
 
 import aoc_utils

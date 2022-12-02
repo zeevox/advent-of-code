@@ -15,7 +15,9 @@ def main(parttwo=False):
         occurs = line[-1].count(line[2])
         if (
             parttwo
-            and (line[-1][int(line[0]) - 1] + line[-1][int(line[1]) - 1]).count(line[2])
+            and (line[-1][int(line[0]) - 1] + line[-1][int(line[1]) - 1]).count(
+                line[2]
+            )
             == 1
         ):
             count += 1

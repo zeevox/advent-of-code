@@ -3,22 +3,22 @@
 import re
 import more_itertools
 
-with open(f"2016/inputs/07.txt", "r") as f:
+with open("2016/inputs/07.txt", "r") as f:
     data = f.read().strip().splitlines()
 
 
 def has_abba(s):
-    for window in more_itertools.windowed(s, 4):
-        if window[:2] == window[::-1][:2] and window[2] != window[3]:
-            return True
-    return False
+    return any(
+        window[:2] == window[::-1][:2] and window[2] != window[3]
+        for window in more_itertools.windowed(s, 4)
+    )
 
 
 def has_bab(s, a, b):
-    for window in more_itertools.windowed(s, 3):
-        if window[0] == b and window[1] == a and window[2] == b:
-            return True
-    return False
+    return any(
+        window[0] == b and window[1] == a and window[2] == b
+        for window in more_itertools.windowed(s, 3)
+    )
 
 
 # data = ["abba[mnop]qrst", "abcd[bddb]xyyx", "aaaa[qwer]tyui", "ioxxoj[asdfgh]zxcvbn"]

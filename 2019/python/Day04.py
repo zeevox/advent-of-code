@@ -9,26 +9,20 @@ import aoc_utils
 
 
 def has_double(s):
-    for i in range(len(s) - 1):
-        if s[i] == s[i + 1]:
-            return True
-    return False
+    return any(s[i] == s[i + 1] for i in range(len(s) - 1))
 
 
 def has_only_double(s):
-    for i in range(len(s) - 1):
-        if s[i] == s[i + 1]:
-            if i >= 1 and s[i - 1] != s[i] or i == 0:
-                if i < len(s) - 2 and s[i + 2] != s[i] or i == len(s) - 2:
-                    return True
-    return False
+    return any(
+        s[i] == s[i + 1]
+        and (i >= 1 and s[i - 1] != s[i] or i == 0)
+        and (i < len(s) - 2 and s[i + 2] != s[i] or i == len(s) - 2)
+        for i in range(len(s) - 1)
+    )
 
 
 def no_decreasing(s):
-    for i in range(len(s) - 1):
-        if int(s[i]) > int(s[i + 1]):
-            return False
-    return True
+    return all(int(s[i]) <= int(s[i + 1]) for i in range(len(s) - 1))
 
 
 def main(start: int, end: int):

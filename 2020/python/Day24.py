@@ -18,7 +18,7 @@ def parse(s):
     x, y = 0, 0
     i = 0
     while i < len(s):
-        if s[i] == "n" or s[i] == "s":
+        if s[i] in ["n", "s"]:
             d = delta[s[i : i + 2]]
             i += 2
         else:
@@ -42,11 +42,7 @@ def adjacent_tiles(c):
 
 
 def count_black_tiles(tiles):
-    black_tiles = 0
-    for tile, flips in tiles.items():
-        if flips % 2 == 1:
-            black_tiles += 1
-    return black_tiles
+    return sum(flips % 2 == 1 for tile, flips in tiles.items())
 
 
 def cellular_automata(tiles):
@@ -55,23 +51,20 @@ def cellular_automata(tiles):
     # abusing the defaultdict functionality
     # initialise all the adjacent tiles that could change value on this round
     for tile in new_tiles.keys():
-        for adj_tile in adjacent_tiles(tile):
-            if tiles[adj_tile] == None:
-                pass
-
+        for _ in adjacent_tiles(tile):
+            pass
     for tile, flips in tiles.items():
-        adjacent_black_tiles = 0
-        for adj_tile in adjacent_tiles(tile):
-            if tiles.get(adj_tile, 0) % 2 == 1:
-                adjacent_black_tiles += 1
+        adjacent_black_tiles = sum(
+            tiles.get(adj_tile, 0) % 2 == 1 for adj_tile in adjacent_tiles(tile)
+        )
 
-        if flips % 2 == 1:
-            if adjacent_black_tiles == 0 or adjacent_black_tiles > 2:
-                new_tiles[tile] += 1
-        else:
-            if adjacent_black_tiles == 2:
-                new_tiles[tile] += 1
-
+        if (
+            flips % 2 == 1
+            and (adjacent_black_tiles == 0 or adjacent_black_tiles > 2)
+            or flips % 2 != 1
+            and adjacent_black_tiles == 2
+        ):
+            new_tiles[tile] += 1
     return new_tiles
 
 

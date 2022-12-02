@@ -56,7 +56,9 @@ def get_neighbours2(
 
     # optional: exclude out-of-bounds indices
     if shape is not None:
-        valid = np.all((neighbours < np.array(shape)) & (neighbours >= 0), axis=1)
+        valid = np.all(
+            (neighbours < np.array(shape)) & (neighbours >= 0), axis=1
+        )
         neighbours = neighbours[valid]
 
     return neighbours

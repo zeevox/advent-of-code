@@ -4,10 +4,10 @@ from math import prod, sqrt
 
 
 def parse(inp):
-    tiles = {}
-    for block in inp.strip().split("\n\n"):
-        tiles[int(block[5:9])] = block.splitlines()[1:]
-    return tiles
+    return {
+        int(block[5:9]): block.splitlines()[1:]
+        for block in inp.strip().split("\n\n")
+    }
 
 
 # rotate 90° clockwise
@@ -38,7 +38,7 @@ def edges(tile):
 
 
 def rotations(tile):
-    for rotation in range(4):
+    for _ in range(4):
         yield tile
         tile = rotate(tile)
 
@@ -94,7 +94,8 @@ def render(grid, strip=True):
     lines = []
     for row in grid:
         image_row = (
-            map("".join, strip_borders(tile) if strip else tile) for _, tile in row
+            map("".join, strip_borders(tile) if strip else tile)
+            for _, tile in row
         )
         lines.extend(map(("" if strip else " ").join, zip(*image_row)))
 
@@ -109,7 +110,8 @@ if __name__ == "__main__":
     corners = [
         tile_id
         for tile_id in tiles
-        if list(adjacent_tiles(tile_id, tiles[tile_id], tiles)).count(False) == 2
+        if list(adjacent_tiles(tile_id, tiles[tile_id], tiles)).count(False)
+        == 2
     ]
     print(prod(corners))
 

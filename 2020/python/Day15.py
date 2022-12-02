@@ -14,10 +14,7 @@ counter = len(li) + 1
 last = li[counter - 2]
 while counter <= 30000000:
     p = freq[last]
-    if p[0] == p[1]:
-        v = 0
-    else:
-        v = p[1] - p[0]
+    v = 0 if p[0] == p[1] else p[1] - p[0]
     last = v
     freq[v] = [freq.get(v, [counter])[-1], counter]
     # just to get an idea of how much progress we were making

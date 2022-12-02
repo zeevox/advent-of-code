@@ -27,10 +27,7 @@ def move(current, cups):
     picked = []
     inv = -1 * (len(cups) - current)
     for i in range(1, 4):
-        if inv + i >= 0:
-            pick = cups.pop(0)
-        else:
-            pick = cups.pop(inv + i)
+        pick = cups.pop(0) if inv + i >= 0 else cups.pop(inv + i)
         picked.append(pick)
 
     print("pick up:", *picked)

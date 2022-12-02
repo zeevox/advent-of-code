@@ -19,14 +19,16 @@ for line in aoc_utils.input_string_list():
         out = ""
         xs = []
         # 36 bits - hardcoded value, iterate over mask and bits simultaneously
-        for i, (bv, bm) in enumerate(zip(list(f"{adr:b}".zfill(36)), list(mask))):
-            if bm == "X":
-                out += "{}"
-                xs.append(i)
-            elif bm == "0":
+        for i, (bv, bm) in enumerate(
+            zip(list(f"{adr:b}".zfill(36)), list(mask))
+        ):
+            if bm == "0":
                 out += bv
             elif bm == "1":
                 out += "1"
+            elif bm == "X":
+                out += "{}"
+                xs.append(i)
         # e.g. if there are 3 floating bits there are 2^3=8 combinations
         for i in range(2 ** len(xs)):
             # replace each {} with one of the bits from the binary number

@@ -27,15 +27,11 @@ def cycle():
             changeable.add(tuple(map(add, point, delta)))
 
     for point in changeable:
-        neighbours = 0
-        for delta in deltas:
-            if tuple(map(add, point, delta)) in d:
-                neighbours += 1
-        if not (neighbours == 2 or neighbours == 3):
+        neighbours = sum(tuple(map(add, point, delta)) in d for delta in deltas)
+        if neighbours not in [2, 3]:
             data.discard(point)
-        else:
-            if neighbours == 3:  # and point in d:
-                data.add(point)
+        if neighbours == 3:  # and point in d:
+            data.add(point)
     return data
 
 

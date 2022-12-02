@@ -15,7 +15,7 @@ def main(parttwo=False):
     valid = 0
     for passport in passports:
         passport = passport.replace("\n", " ")
-        if not all(passport.count(field) == 1 for field in fields):
+        if any(passport.count(field) != 1 for field in fields):
             continue
         # this RegEx is *so* close and yet I'm still getting an off-by-one error somewhere
         # it outputs 138 when it should be 137 but not exactly sure why
