@@ -1,19 +1,47 @@
 import argparse
-import operator
-import itertools
 import hashlib
 import heapq
+import itertools
+import operator
 from pathlib import Path
-from typing import Any, Collection, Iterable
+from typing import Any, Callable, Collection, Generator, Iterable
+
+
+def _get_filename_interactively() -> str:
+    return input("Input filename: ").strip()
+
+
+def _get_path_to_file(filename: str) -> Path:
+    return Path(__file__).parent.parent / "inputs" / filename
+
+
+def _get_ref_to_file() -> Path:
+    # by default, we attempt to get the puzzle input as a function argument
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "filename",
+        type=str,
+        nargs="?",
+        help="The filename of the puzzle input",
+        # if none is provided, get it interactively
+        default=_get_filename_interactively(),
+    )
+
+    args = parser.parse_args()
+    file: Path = _get_path_to_file(args.filename)
+
+    # and keep trying until a valid file is provided
+    while not file.is_file():
+        print(f"Invalid file {file}")
+        file = _get_path_to_file(_get_filename_interactively())
+    return file
+
+
+_file: Path = _get_ref_to_file()
 
 
 def input_file() -> Path:
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "filename", type=str, help="The filename of the puzzle input"
-    )
-    args = parser.parse_args()
-    return Path(__file__).parent.parent / "inputs" / args.filename
+    return _file
 
 
 def input_string(file: Path = input_file()) -> str:
@@ -39,6 +67,21 @@ def input_block_list(file: Path = input_file()) -> list[str]:
 def filter_empty(li: Iterable) -> list:
     """remove empty entries (e.g. when splitting a string)"""
     return list(filter(None, li))
+
+
+def flat_map(func: Callable[..., list], iterable: Iterable) -> list:
+    """map a function returning a list over a list and concatenate the results"""
+    output = []
+    for item in iterable:
+        output.extend(func(item))
+    return output
+
+
+def gen_flat_map(
+    func: Callable[..., list], iterable: Iterable
+) -> Generator[Any, None, None]:
+    for item in iterable:
+        yield from func(item)
 
 
 def nlargest(n: int, li: Collection, key=None) -> list:
