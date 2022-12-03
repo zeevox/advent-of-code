@@ -37,31 +37,34 @@ def _get_ref_to_file() -> Path:
     return file
 
 
-_file: Path = _get_ref_to_file()
+_file: Path | None = None
 
 
 def input_file() -> Path:
+    global _file
+    if _file is None:
+        _file = _get_ref_to_file()
     return _file
 
 
-def input_string(file: Path = input_file()) -> str:
+def input_string() -> str:
     """read input into a string"""
-    return file.read_text().strip()
+    return input_file().read_text().strip()
 
 
-def input_int_list(file: Path = input_file()) -> list[int]:
+def input_int_list() -> list[int]:
     """parse input into a list of ints"""
-    return list(map(int, input_string_list(file)))
+    return list(map(int, input_string_list()))
 
 
-def input_string_list(file: Path = input_file()) -> list[str]:
+def input_string_list() -> list[str]:
     """parse input into a list of strings"""
-    return list(map(str.rstrip, input_string(file).splitlines()))
+    return list(map(str.rstrip, input_string().splitlines()))
 
 
-def input_block_list(file: Path = input_file()) -> list[str]:
+def input_block_list() -> list[str]:
     """input split by paragraph i.e. two newlines"""
-    return input_string(file).split("\n\n")
+    return input_string().split("\n\n")
 
 
 def filter_empty(li: Iterable) -> list:
@@ -80,6 +83,7 @@ def flat_map(func: Callable[..., list], iterable: Iterable) -> list:
 def gen_flat_map(
     func: Callable[..., list], iterable: Iterable
 ) -> Generator[Any, None, None]:
+    """map a function returning a list over a list and concatenate the results"""
     for item in iterable:
         yield from func(item)
 
