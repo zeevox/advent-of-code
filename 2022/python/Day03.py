@@ -1,4 +1,4 @@
-from string import ascii_lowercase, ascii_uppercase
+from string import ascii_letters
 
 import more_itertools
 
@@ -13,18 +13,19 @@ def parse(rucksack: str) -> tuple[str, str]:
 
 
 def value(letter: str) -> int:
-    return (ascii_lowercase + ascii_uppercase).index(letter) + 1
+    assert len(letter) == 1
+    return ascii_letters.index(letter) + 1
 
 
-def common(*strings: Iterable[str]) -> set[str]:
+def common(strings: Iterable[str]) -> set[str]:
     return set.intersection(*map(set, strings))
 
 
+value_line = lambda line: common(parse(line))
+
+
 def part1(rucksacks: list[str]) -> int:
-    return sum(
-        sum(value(letter) for letter in common(parse(line)))
-        for line in rucksacks
-    )
+    return sum(map(value, flat_map(value_line, rucksacks)))
 
 
 def part2(rucksacks: list[str]) -> int:

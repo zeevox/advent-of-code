@@ -23,17 +23,18 @@ def _get_ref_to_file() -> Path:
         type=str,
         nargs="?",
         help="The filename of the puzzle input",
-        # if none is provided, get it interactively
-        default=_get_filename_interactively(),
+        default=None,
     )
 
-    args = parser.parse_args()
-    file: Path = _get_path_to_file(args.filename)
+    filename = parser.parse_args().filename
+    file = _get_path_to_file(filename) if filename is not None else None
 
     # and keep trying until a valid file is provided
-    while not file.is_file():
+    while file is not None and not file.is_file():
         print(f"Invalid file {file}")
         file = _get_path_to_file(_get_filename_interactively())
+
+    assert file is not None
     return file
 
 
@@ -72,7 +73,7 @@ def filter_empty(li: Iterable) -> list:
     return list(filter(None, li))
 
 
-def flat_map(func: Callable[..., list], iterable: Iterable) -> list:
+def flat_map(func: Callable[..., Iterable], iterable: Iterable) -> list:
     """map a function returning a list over a list and concatenate the results"""
     output = []
     for item in iterable:
@@ -81,7 +82,7 @@ def flat_map(func: Callable[..., list], iterable: Iterable) -> list:
 
 
 def gen_flat_map(
-    func: Callable[..., list], iterable: Iterable
+    func: Callable[..., Iterable], iterable: Iterable
 ) -> Generator[Any, None, None]:
     """map a function returning a list over a list and concatenate the results"""
     for item in iterable:
