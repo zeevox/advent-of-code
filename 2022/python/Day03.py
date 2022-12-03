@@ -1,42 +1,40 @@
+from string import ascii_lowercase, ascii_uppercase
+
 import more_itertools
 
 from aoc_utils import *
 
-
-def parse(rs: str):
-    return rs[: len(rs) // 2], rs[len(rs) // 2 :]
+from typing import Iterable
 
 
-from string import ascii_lowercase, ascii_uppercase
+def parse(rucksack: str) -> tuple[str, str]:
+    split_point = len(rucksack) // 2
+    return rucksack[:split_point], rucksack[split_point:]
 
 
-def main(inp):
-    sump = 0
-    for line in inp:
-        f, s = parse(line)
-        sf, ss = set(f), set(s)
-        common = sf.intersection(ss)
-        for letter in common:
-            if letter in ascii_lowercase:
-                sump += ascii_lowercase.index(letter) + 1
-            elif letter in ascii_uppercase:
-                sump += ascii_uppercase.index(letter) + 27
-    print(sump)
+def value(letter: str) -> int:
+    return (ascii_lowercase + ascii_uppercase).index(letter) + 1
 
 
-def mainp(inp):
-    sump = 0
-    for a, b, c in more_itertools.chunked(inp, 3):
-        common = set(a).intersection(set(b)).intersection(set(c))
-        for letter in common:
-            if letter in ascii_lowercase:
-                sump += ascii_lowercase.index(letter) + 1
-            elif letter in ascii_uppercase:
-                sump += ascii_uppercase.index(letter) + 27
-    print(sump)
+def common(*strings: Iterable[str]) -> set[str]:
+    return set.intersection(*map(set, strings))
+
+
+def part1(rucksacks: list[str]) -> int:
+    return sum(
+        sum(value(letter) for letter in common(parse(line)))
+        for line in rucksacks
+    )
+
+
+def part2(rucksacks: list[str]) -> int:
+    return sum(
+        value(next(iter(set.intersection(*map(set, elfs)))))
+        for elfs in more_itertools.chunked(rucksacks, 3)
+    )
 
 
 if __name__ == "__main__":
     inp = input_string_list()
-    main(inp)
-    mainp(inp)
+    print(part1(inp))
+    print(part2(inp))
