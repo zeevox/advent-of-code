@@ -5,8 +5,13 @@ from functools import lru_cache, partial, reduce
 import more_itertools
 from sortedcontainers import SortedDict, SortedList, SortedSet
 
-import aoc_utils
+from aoc_utils import *
 
 
-def main():
+def main(inp):
     pass
+
+
+if __name__ == "__main__":
+    inp = input_string_list()
+    main(inp)
