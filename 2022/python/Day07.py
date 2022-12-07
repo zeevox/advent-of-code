@@ -1,61 +1,44 @@
-import itertools
-from collections import Counter, defaultdict
-from functools import lru_cache, partial, reduce
-
-import more_itertools
-from sortedcontainers import SortedDict, SortedList, SortedSet
-
-from aoc_utils import *
-
+from functools import lru_cache
 from pathlib import Path
 
-from dataclasses import dataclass
-
-
-class File:
-    name: str
-    size: int
-
-    def __init__(self, string: str):
-        size, filename = string.split()
-        self.size = int(size)
-        self.name = filename.strip()
-
-
-class Directory:
-    name: str
-    subdirectories = dict()
-    files = dict()
-
-    def __init__(self, name: str):
-        self.name = name
-
-    def size(self):
-        return sum(file.size for file in self.files.values()) + sum(
-            dir.size() for dir in self.subdirectories.values()
-        )
-
-
-from pprint import pprint
+from aoc_utils import *
 
 filesystem: dict[Path, set[Path] | int] = {}
 
 
 def parse_groups(groups: list[list[str]]):
+
+    # start in the root folder
     cwd = Path("/")
+
+    # a group is a list representing a command and its lines of output
     for group in groups:
         cmd, *result = group
+
+        # if this is a listing
         if cmd == "ls":
+            # then this entry in the filesystem is a collection of pointers to
+            # other files
             filesystem[cwd] = set()
+
             for entry in result:
                 size, name = entry.split()
+
+                # add a pointer for both contained files and subdirectories
                 filesystem[cwd].add(cwd / name)
+
+                # but if it is a file then we also add a filesystem entry with
+                # its size
                 if size.isnumeric():
                     filesystem[cwd / name] = int(size)
-        else:
-            print(cmd)
+        else:  # this is the case that we are changing directories
+            # we only care about the directory we are changing to
             directory = cmd.split()[1]
+
+            # amend the current working directory appropriately
             cwd = cwd.parent if directory == ".." else cwd / directory
+
+    # it is stored in a global variable too but return for sanity
     return filesystem
 
 
@@ -71,23 +54,22 @@ def size_dir(dir: Path):
 
 if __name__ == "__main__":
     inp = input_string()
+
+    # split based on each new dollar sign indicating a new command
     groups = [group.splitlines() for group in inp[2:].split("\n$ ")]
+
+    # parse to a flat filesystem of pointers and sizes
     parsed = parse_groups(groups)
-    directory_sizes = {
-        str(directory): size_dir(directory)
+
+    # calculate a dictionry with
+    directory_sizes = [
+        size_dir(directory)
         for directory, value in parsed.items()
+        # line below excludes files
         if not isinstance(value, int)
-    }
-    print(directory_sizes)
-    s = 0
-    for k, v in directory_sizes.items():
-        if v <= 100_000:
-            print(k, v)
-            s += v
-    print(s)
+    ]
+
+    print(sum(v for v in directory_sizes if v <= 100_000))
 
     at_least = size_dir(Path("/")) - 40000000
-    mins = min(
-        sorted(filter(lambda x: x >= at_least, directory_sizes.values()))
-    )
-    print(mins)
+    print(min(filter(lambda x: x >= at_least, directory_sizes)))
