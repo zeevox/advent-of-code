@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/csharp,rider,python,vim
-# Edit at https://www.toptal.com/developers/gitignore?templates=csharp,rider,python,vim
+# Created by https://www.toptal.com/developers/gitignore/api/vim,rider,csharp,python,scala,metals,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim,rider,csharp,python,scala,metals,visualstudiocode
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -399,6 +399,11 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+### Metals ###
+.metals/
+.bloop/
+project/**/metals.sbt
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
@@ -563,6 +568,11 @@ cython_debug/
 # Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
 poetry.toml
 
+# ruff
+.ruff_cache/
+
+# LSP config files
+pyrightconfig.json
 
 ### Rider ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -643,6 +653,12 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+### Scala ###
+*.class
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]
@@ -663,4 +679,17 @@ tags
 # Persistent undo
 [._]*.un~
 
-# End of https://www.toptal.com/developers/gitignore/api/csharp,rider,python,vim
+### VisualStudioCode ###
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/vim,rider,csharp,python,scala,metals,visualstudiocode
