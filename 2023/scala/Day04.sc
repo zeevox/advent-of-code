@@ -1,11 +1,10 @@
 import scala.io.Source
 import scala.util.Using
 
-case class Card(id: Int, winners: Set[Int], deck: Set[Int]) {
-  def worth = math.pow(2, matches - 1).toInt
-  def matches = winners.intersect(deck).size
-  def next = (id + 1 to id + matches)
-  def count: Int = 1 + next.map(id => cards(id).count).sum
+case class Card(id: Int, matches: Int) {
+  lazy val worth = 1 << (matches - 1)
+  lazy val next = (id + 1 to id + matches)
+  lazy val count: Int = next.map(cards(_).count).sum + 1
 }
 
 def extract(s: String): Set[Int] =
@@ -13,7 +12,7 @@ def extract(s: String): Set[Int] =
 
 def parse(line: String): Card = line match {
   case s"Card $id: $winners | $deck" =>
-    Card(id.trim.toInt, extract(winners), extract(deck))
+    Card(id.trim.toInt, (extract(winners) & extract(deck)).size)
 }
 
 val cards: Map[Int, Card] =
