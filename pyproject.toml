@@ -1,2 +1,14 @@
-[tool.black]
-line-length = 80
+[project]
+name = "advent-of-code"
+version = "0.1.0"
+description = "My solutions to the Advent of Code challenge"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "more-itertools>=10.5.0",
+    "networkx>=3.4.2",
+    "parse>=1.20.2",
+    "pre-commit>=4.0.1",
+    "ruff>=0.8.1",
+    "sortedcontainers>=2.4.0",
+]
