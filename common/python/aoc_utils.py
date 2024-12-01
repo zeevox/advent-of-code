@@ -1,10 +1,12 @@
 import argparse
+import functools
 import hashlib
 import heapq
 import inspect
 import itertools
 import operator
 import re
+import timeit
 from pathlib import Path
 from typing import Any, Callable, Collection, Generator, Iterable
 
@@ -161,3 +163,14 @@ def print_grid_set_dict(
                 continue
             print(grid[(x, y)] if isinstance(grid, dict) else filled, end=sep)
         print()
+
+
+def timing(f: Callable, repeat: int = 10):
+    @functools.wraps(f)
+    def wrap(*args, **kw):
+        result = f(*args, **kw)
+        time = timeit.timeit(stmt=lambda: f(*args, **kw), number=repeat) / repeat
+        print(f"func:{f.__name__!r} took: {time:.2n} sec")
+        return result
+
+    return wrap
