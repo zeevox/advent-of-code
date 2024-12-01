@@ -1,7 +1,8 @@
 from collections import Counter
 
-with open("2016/inputs/06.txt", "r") as f:
-    data = f.readlines()
+import aoc_utils
+
+data = aoc_utils.input_string_list()
 
 for col in zip(*data):
     print(Counter(col).most_common(1)[0][0], end="")

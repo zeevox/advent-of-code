@@ -30,7 +30,7 @@ requires-dist = [
 
 [[package]]
 name = "aoc-utils"
-version = "0.1.0"
+version = "0.1.1"
 source = { directory = "common/python" }
 
 [[package]]

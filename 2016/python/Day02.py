@@ -1,5 +1,6 @@
-with open("2016/inputs/02.txt", "r") as f:
-    instructions = f.read().splitlines()
+import aoc_utils
+
+instructions = aoc_utils.input_string_list()
 
 start = 5
 code = 0

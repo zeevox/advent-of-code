@@ -1,10 +1,11 @@
 import itertools
+
+import aoc_utils
 import more_itertools
 
-with open("2016/inputs/03.txt", "r") as f:
-    triangles = [
-        list(map(int, sides.strip().split())) for sides in f.read().strip().splitlines()
-    ]
+triangles = [
+    list(map(int, sides.strip().split())) for sides in aoc_utils.input_string_list()
+]
 
 count = 0
 for sides in triangles:

@@ -1,8 +1,9 @@
 import re
+
+import aoc_utils
 import more_itertools
 
-with open("2016/inputs/07.txt", "r") as f:
-    data = f.read().strip().splitlines()
+data = aoc_utils.input_string_list()
 
 
 def has_abba(s):

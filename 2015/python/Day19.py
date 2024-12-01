@@ -1,8 +1,9 @@
 import re
 from pprint import pprint
 
-with open("2015/inputs/19.txt", "r", encoding="utf-8") as f:
-    data = f.read().strip()
+import aoc_utils
+
+data = aoc_utils.input_string()
 
 # use the empty line before the input molecule to split the data
 replacements_str, input_molecule = data.split("\n\n")

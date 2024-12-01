@@ -2,8 +2,9 @@ from collections import Counter
 from operator import itemgetter
 from string import ascii_lowercase
 
-with open("2016/inputs/04.txt", "r") as f:
-    rooms = f.read().strip().splitlines()
+import aoc_utils
+
+rooms = aoc_utils.input_string_list()
 
 count = 0
 for room in rooms:

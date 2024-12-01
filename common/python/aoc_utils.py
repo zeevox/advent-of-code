@@ -4,6 +4,7 @@ import heapq
 import inspect
 import itertools
 import operator
+import re
 from pathlib import Path
 from typing import Any, Callable, Collection, Generator, Iterable
 
@@ -20,6 +21,14 @@ def _get_path_to_file(filename: str) -> Path:
     return Path(_get_caller()).parent.parent / "inputs" / filename
 
 
+def _get_default_filename() -> str:
+    """Makes educated guess based on caller filename on which input we should use."""
+    caller: str = _get_caller()
+    match = re.search(r"Day(\d+).*\.py", caller)
+    if match:
+        return f"{match.group(1)}.txt"
+
+
 def _get_ref_to_file() -> Path:
     # by default, we attempt to get the puzzle input as a function argument
     parser = argparse.ArgumentParser()
@@ -31,13 +40,12 @@ def _get_ref_to_file() -> Path:
         default=None,
     )
 
-    filename = parser.parse_args().filename
-    file = _get_path_to_file(filename) if filename is not None else None
-
-    # and keep trying until a valid file is provided
-    while file is not None and not file.is_file():
-        print(f"Invalid file {file}")
-        file = _get_path_to_file(_get_filename_interactively())
+    filename = (
+        parser.parse_args().filename
+        or _get_default_filename()
+        or _get_filename_interactively()
+    )
+    file = _get_path_to_file(filename)
 
     assert file is not None
     return file
