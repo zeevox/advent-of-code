@@ -1,7 +1,7 @@
 import itertools
 import math
 
-from aoc_utils import *
+from aoc_utils import input_string_list
 
 
 def transposed(grid: list[list[int]]):

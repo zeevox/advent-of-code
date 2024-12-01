@@ -1,7 +1,7 @@
 import re
 from collections import defaultdict
 
-from aoc_utils import *
+from aoc_utils import input_string_list
 
 
 def main(lines: list[str]) -> None:

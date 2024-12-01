@@ -1,10 +1,8 @@
 from string import ascii_letters
+from typing import Iterable
 
 import more_itertools
-
-from aoc_utils import *
-
-from typing import Iterable
+from aoc_utils import flat_map, input_string_list
 
 
 def parse(rucksack: str) -> tuple[str, str]:
@@ -21,7 +19,8 @@ def common(strings: Iterable[str]) -> set[str]:
     return set.intersection(*map(set, strings))
 
 
-value_line = lambda line: common(parse(line))
+def value_line(line):
+    return common(parse(line))
 
 
 def part1(rucksacks: list[str]) -> int:

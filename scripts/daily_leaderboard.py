@@ -41,9 +41,7 @@ def get_aoc_leaderboard(year: int = 2021, leaderboard_id: int = 805152) -> dict:
 
     response = session.get(
         f"https://adventofcode.com/{year}/leaderboard/private/view/{leaderboard_id}.json",
-        headers=CaseInsensitiveDict(
-            {"cookie": f"session={get_session_cookie()}"}
-        ),
+        headers=CaseInsensitiveDict({"cookie": f"session={get_session_cookie()}"}),
     )
 
     try:
@@ -189,11 +187,7 @@ def get_custom_leaderboard() -> pandas.DataFrame:
             [
                 member["name"],
                 points_for_user(
-                    (
-                        data := stars_for_each_day(
-                            member["completion_day_level"]
-                        )
-                    )[0]
+                    (data := stars_for_each_day(member["completion_day_level"]))[0]
                 ),
                 member["yeargroup"],
                 data[1],

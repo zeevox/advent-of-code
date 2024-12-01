@@ -1,16 +1,11 @@
-from collections import *
-import itertools
-import random
 import re
-import sys
+
 import aoc_utils
-import queue
 
 
 def main():
     inp = [
-        re.split(" bags contain |, ", line)
-        for line in aoc_utils.input_string_list()
+        re.split(" bags contain |, ", line) for line in aoc_utils.input_string_list()
     ]
     return bagscontain("shiny gold", inp)
 

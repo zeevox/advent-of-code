@@ -1,6 +1,6 @@
 import operator
 
-from aoc_utils import *
+from aoc_utils import input_string_list
 
 
 def common_count(xs: list[str], index: int):

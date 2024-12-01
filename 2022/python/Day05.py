@@ -1,14 +1,15 @@
-from aoc_utils import *
+from aoc_utils import input_block_list
 
 
-parse_crates = lambda crates: dict(
-    enumerate(
-        [
-            [crate for crate in reversed(stack) if crate != " "]
-            for stack in zip(*crates.rstrip().splitlines()[:-1])
-        ][1:37:4]
+def parse_crates(crates):
+    return dict(
+        enumerate(
+            [
+                [crate for crate in reversed(stack) if crate != " "]
+                for stack in zip(*crates.rstrip().splitlines()[:-1])
+            ][1:37:4]
+        )
     )
-)
 
 
 def pm(mv):

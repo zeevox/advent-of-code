@@ -1,13 +1,12 @@
 from functools import lru_cache
 from pathlib import Path
 
-from aoc_utils import *
+from aoc_utils import input_string
 
 filesystem: dict[Path, set[Path] | int] = {}
 
 
 def parse_groups(groups: list[list[str]]):
-
     # start in the root folder
     cwd = Path("/")
 

@@ -1,10 +1,3 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
-import aoc_utils
-
 li = [1, 0, 15, 2, 10, 13]
 freq = {x: [i + 1, i + 1] for i, x in enumerate(li)}
 

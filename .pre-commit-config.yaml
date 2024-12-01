@@ -1,8 +1,8 @@
 default_language_version:
-    python: python3.10
+  python: python3.13
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: check-ast
       - id: check-merge-conflict
@@ -10,12 +10,9 @@ repos:
       - id: check-symlinks
       - id: check-yaml
       - id: destroyed-symlinks
-  - repo: https://github.com/psf/black
-    rev: 22.10.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.1
     hooks:
-      - id: black
-  - repo: https://github.com/sourcery-ai/sourcery
-    rev: v1.0.1
-    hooks:
-      - id: sourcery
-        args: [--diff=git diff HEAD, --no-summary]
+      - id: ruff
+        args: [ --fix ]
+      - id: ruff-format

@@ -1,10 +1,8 @@
-from collections import *
 import itertools
 import typing
-import networkx as nx
-import numpy as np
 from queue import Queue
-from collections.abc import Iterable
+
+import numpy as np
 
 
 def print_grid(grid: typing.Union[np.ndarray, list[list[object]]]) -> None:
@@ -55,9 +53,7 @@ def get_neighbours2(
 
     # optional: exclude out-of-bounds indices
     if shape is not None:
-        valid = np.all(
-            (neighbours < np.array(shape)) & (neighbours >= 0), axis=1
-        )
+        valid = np.all((neighbours < np.array(shape)) & (neighbours >= 0), axis=1)
         neighbours = neighbours[valid]
 
     return neighbours

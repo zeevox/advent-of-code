@@ -6,7 +6,7 @@ import aoc_utils
 
 
 def gen_adjacent_coords(
-    point: tuple[int, int]
+    point: tuple[int, int],
 ) -> Generator[tuple[int, int], None, None]:
     for vertical_offset in [-1, 0, 1]:
         for horizontal_offset in [-1, 0, 1]:

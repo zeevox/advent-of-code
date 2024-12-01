@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from aoc_utils import *
+from aoc_utils import input_string_list
 
 instructions = input_string_list()
 

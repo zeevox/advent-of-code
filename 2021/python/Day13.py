@@ -2,9 +2,7 @@ import aoc_utils
 
 
 def main(coords, instructions):
-    coords = {
-        tuple(map(int, coord.split(","))) for coord in coords.splitlines()
-    }
+    coords = {tuple(map(int, coord.split(","))) for coord in coords.splitlines()}
     folds = [(s[11], int(s[13:])) for s in instructions.splitlines()]
 
     printed = False

@@ -25,8 +25,7 @@ def part1(puzzle_input):
 
 def part2(puzzle_input):
     return sum(
-        score_move(op, lookup[you][op])
-        for op, you in map(str.split, puzzle_input)
+        score_move(op, lookup[you][op]) for op, you in map(str.split, puzzle_input)
     )
 
 

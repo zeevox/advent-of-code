@@ -1,11 +1,3 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
-import aoc_utils
-
-
 def has_double(s):
     return any(s[i] == s[i + 1] for i in range(len(s) - 1))
 

@@ -1,12 +1,9 @@
-from functools import lru_cache
-from collections import *
-import itertools
-import random
 import re
-import sys
+from functools import lru_cache
+
 import aoc_utils
 
-rules, ms = aoc_utils.input().read().split("\n\n")
+rules, ms = aoc_utils.input_string().split("\n\n")
 
 rs = {}
 for rule in rules.split("\n"):

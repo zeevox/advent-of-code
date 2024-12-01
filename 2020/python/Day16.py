@@ -1,17 +1,11 @@
 # !/usr/bin/python3
 
-# from collections import *
-# import itertools
-# import random
 import re
 
-# import sys
 import aoc_utils
 
 inp = aoc_utils.input_string_list()
-rules = {
-    (x := re.split(": |-| or ", s))[0]: list(map(int, x[1:])) for s in inp[:20]
-}
+rules = {(x := re.split(": |-| or ", s))[0]: list(map(int, x[1:])) for s in inp[:20]}
 # print(rules)
 
 

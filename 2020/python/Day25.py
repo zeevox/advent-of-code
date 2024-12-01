@@ -18,8 +18,7 @@ def transform(subject, loop_size):
     return value
 
 
-inp = aoc_utils.input().readlines()
-# inp = ["5764801", "17807724"]
+inp = aoc_utils.input_string_list()
 
 card_pk, door_pk = list(map(int, inp))
 

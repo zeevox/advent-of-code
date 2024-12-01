@@ -3,8 +3,7 @@ import more_itertools
 
 with open("2016/inputs/03.txt", "r") as f:
     triangles = [
-        list(map(int, sides.strip().split()))
-        for sides in f.read().strip().splitlines()
+        list(map(int, sides.strip().split())) for sides in f.read().strip().splitlines()
     ]
 
 count = 0

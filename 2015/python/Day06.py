@@ -1,5 +1,4 @@
-import itertools
-from aoc_utils import *
+from aoc_utils import input_string_list, gen_rectangle_coords
 
 instructions = input_string_list()
 

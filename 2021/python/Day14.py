@@ -46,11 +46,9 @@ def main2(molecule: str, replacements: str, iterations: int = 10):
     # we do not care about the iteration step we are
     # on, discard the counter variable
     for _ in range(iterations):
-
         # we call list() to prevent an error, since we are
         # updating the list that we are iterating over
         for pair, count in list(pairs.items()):
-
             # inverted if statement for less indentation
             # but also turns out all pairs are in rules
             # so kinda useless if statement anyway

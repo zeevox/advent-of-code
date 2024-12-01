@@ -1,13 +1,8 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
 import aoc_utils
 
 
 def inp():
-    return int(aoc_utils.input().read())
+    return int(aoc_utils.input_string())
 
 
 def destination(search, cups):

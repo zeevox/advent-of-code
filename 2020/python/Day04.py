@@ -1,8 +1,5 @@
-from collections import *
-import itertools
-import random
 import re
-import sys
+
 import aoc_utils
 
 fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]

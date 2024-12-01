@@ -99,17 +99,11 @@ class Packet:
         elif self.type == 4:
             return self.value
         elif self.type == 5:
-            return int(
-                self.subpackets[0].evaluate() > self.subpackets[1].evaluate()
-            )
+            return int(self.subpackets[0].evaluate() > self.subpackets[1].evaluate())
         elif self.type == 6:
-            return int(
-                self.subpackets[0].evaluate() < self.subpackets[1].evaluate()
-            )
+            return int(self.subpackets[0].evaluate() < self.subpackets[1].evaluate())
         elif self.type == 7:
-            return int(
-                self.subpackets[0].evaluate() == self.subpackets[1].evaluate()
-            )
+            return int(self.subpackets[0].evaluate() == self.subpackets[1].evaluate())
         raise ValueError("Cannot evaluate this expression")
 
 

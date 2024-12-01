@@ -15,10 +15,7 @@ def main(xs: list[int]):
     """
     return (
         min(sum(map(lambda y: abs(y - i), xs)) for i in range(max(xs))),
-        min(
-            sum(map(lambda y: sum_one_to_n(abs(y - i)), xs))
-            for i in range(max(xs))
-        ),
+        min(sum(map(lambda y: sum_one_to_n(abs(y - i)), xs)) for i in range(max(xs))),
     )
 
 

@@ -1,4 +1,4 @@
-from aoc_utils import *
+from aoc_utils import input_string, md5sum
 
 door_id: str = input_string()
 

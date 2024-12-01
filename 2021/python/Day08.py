@@ -9,10 +9,7 @@ def first_with(predicate: Callable, iterable: Iterable) -> str:
 
 def main(xs: list[str]):
     print(
-        sum(
-            sum(len(x) in {2, 3, 4, 7} for x in x.split(" | ")[1].split())
-            for x in xs
-        )
+        sum(sum(len(x) in {2, 3, 4, 7} for x in x.split(" | ")[1].split()) for x in xs)
     )
 
     count = 0
@@ -50,8 +47,7 @@ def main(xs: list[str]):
             inp,
         )
         two = first_with(
-            lambda x: x
-            not in [seven, four, eight, one, nine, three, zero, six, five],
+            lambda x: x not in [seven, four, eight, one, nine, three, zero, six, five],
             inp,
         )
         mapping: list[tuple[str, ...]] = list(
@@ -72,9 +68,7 @@ def main(xs: list[str]):
             )
         )
 
-        value = "".join(
-            str(mapping.index(tuple(sorted(list(digit))))) for digit in out
-        )
+        value = "".join(str(mapping.index(tuple(sorted(list(digit))))) for digit in out)
         count += int(value)
 
     print(count)

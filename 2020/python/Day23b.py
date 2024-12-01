@@ -1,4 +1,4 @@
-class cup:
+class Cup:
     def __init__(self, label):
         self.label = int(label)
 
@@ -8,12 +8,11 @@ class cup:
 
 # get the cups, then pad with numbers
 def get_cups(s, maxlen):
-    yield from map(cup, list(s))
-    yield from map(cup, range(len(s) + 1, maxlen + 1))
+    yield from map(Cup, list(s))
+    yield from map(Cup, range(len(s) + 1, maxlen + 1))
 
 
 def process_cups(s, n_cups=1000000):
-
     # perhaps not the most efficient way of generating a linked list, but it
     # works
     cups = list(get_cups(s, n_cups))

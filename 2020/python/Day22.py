@@ -49,9 +49,7 @@ def combat_round(deck1, deck2, game, out=False, game_count=1):
         if game is not None and card1 <= len(deck1) and card2 <= len(deck2):
             if out:
                 print("Playing a sub-game to determine the winner...")
-            winner = play_game(
-                deck1[:card1], deck2[:card2], False, out, game_count + 1
-            )
+            winner = play_game(deck1[:card1], deck2[:card2], False, out, game_count + 1)
 
         if out:
             print(f"Player {winner} wins this round of game {game_count}")
@@ -84,7 +82,7 @@ def play_game(deck1, deck2, part1, out=False, game_count=1):
     return 1 if deck1 else 2
 
 
-inp = aoc_utils.input().read()
+inp = aoc_utils.input_string()
 
 # we must assume that the input always has two players' decks
 # although there is no validation that the input is such

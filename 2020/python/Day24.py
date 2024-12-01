@@ -1,5 +1,6 @@
+from collections import defaultdict
 from copy import deepcopy
-from collections import *
+
 import aoc_utils
 
 delta = {
@@ -67,9 +68,8 @@ def cellular_automata(tiles):
 
 
 if __name__ == "__main__":
-
     tiles = defaultdict(int)
-    for line in aoc_utils.input().readlines():
+    for line in aoc_utils.input_string_list():
         tiles[parse(line.strip())] += 1
 
     print(count_black_tiles(tiles))

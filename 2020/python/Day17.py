@@ -1,6 +1,7 @@
-from operator import add
-from copy import deepcopy
 import itertools
+from copy import deepcopy
+from operator import add
+
 import aoc_utils
 
 dimensions = 4
@@ -9,7 +10,7 @@ dimensions = 4
 # https://wiki.python.org/moin/TimeComplexity
 d = set()
 
-for y, line in enumerate(aoc_utils.input().readlines()):
+for y, line in enumerate(aoc_utils.input_string_list()):
     for x, col in enumerate(line):
         if col == "#":
             d.add(tuple([x, y] + [0] * (dimensions - 2)))

@@ -1,7 +1,7 @@
 import itertools
 import math
 
-from aoc_utils import *
+from aoc_utils import input_string_list
 
 
 def parse(box: str) -> tuple[int, int, int]:

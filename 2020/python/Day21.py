@@ -1,15 +1,12 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
+from collections import defaultdict
+
 import aoc_utils
 
 database = defaultdict(list)
 all_ingredients = []
 all_allergens = set()
 
-inp = aoc_utils.input().read()
+inp = aoc_utils.input_string()
 for line in inp.strip().splitlines():
     split = line.strip().split(" (contains ")
 

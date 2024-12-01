@@ -1,8 +1,3 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
 import aoc_utils
 
 mask = ""
@@ -17,9 +12,7 @@ for line in aoc_utils.input_string_list():
         out = ""
         xs = []
         # 36 bits - hardcoded value, iterate over mask and bits simultaneously
-        for i, (bv, bm) in enumerate(
-            zip(list(f"{adr:b}".zfill(36)), list(mask))
-        ):
+        for i, (bv, bm) in enumerate(zip(list(f"{adr:b}".zfill(36)), list(mask))):
             if bm == "0":
                 out += bv
             elif bm == "1":

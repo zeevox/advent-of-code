@@ -1,8 +1,3 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
 import aoc_utils
 
 ws = [w.split(",") for w in aoc_utils.input_string_list()]

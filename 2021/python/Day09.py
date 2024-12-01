@@ -48,12 +48,9 @@ def main(grid: list[list[int]]):
         while not q.empty():
             x, y = q.get()
             if all(
-                grid[adj[1]][adj[0]]
-                >= grid[y][x]  # the weak inequality is critical!
+                grid[adj[1]][adj[0]] >= grid[y][x]  # the weak inequality is critical!
                 for adj in adjacent((x, y), (len(grid[0]), len(grid)))
-                if adj not in visited
-                and adj != (x, y)
-                and grid[adj[1]][adj[0]] != 9
+                if adj not in visited and adj != (x, y) and grid[adj[1]][adj[0]] != 9
             ):
                 for adj in adjacent((x, y), (len(grid[0]), len(grid))):
                     if (

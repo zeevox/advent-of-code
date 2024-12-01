@@ -1,4 +1,4 @@
-from aoc_utils import *
+from aoc_utils import input_string_list
 
 
 def pe(e):

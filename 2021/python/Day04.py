@@ -1,4 +1,4 @@
-from aoc_utils import *
+from aoc_utils import input_block_list
 
 
 def main(numbers: list[int], boards: list[list[list[int]]], func=max):

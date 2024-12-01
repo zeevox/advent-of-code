@@ -1,7 +1,3 @@
-from collections import *
-import itertools
-import random
-import sys
 import aoc_utils
 
 
@@ -11,11 +7,7 @@ def main(target):
         if x < target:
             array[x] = True
     return next(
-        (
-            (i, target - i)
-            for i in range(target)
-            if array[i] and array[target - i]
-        ),
+        ((i, target - i) for i in range(target) if array[i] and array[target - i]),
         [],
     )
 

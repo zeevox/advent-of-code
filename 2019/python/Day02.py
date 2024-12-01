@@ -1,8 +1,5 @@
-from collections import *
 import itertools
-import random
-import re
-import sys
+
 import aoc_utils
 
 
@@ -28,10 +25,10 @@ def intcode(inp, noun, verb):
 # print(intcode("1,9,10,3,2,3,11,0,99,30,40,50"))
 
 # Part 1
-print(intcode(aoc_utils.input().read(), 12, 2)[0])
+print(intcode(aoc_utils.input_string(), 12, 2)[0])
 
 # Part 2
 for n, v in itertools.product(range(100), range(100)):
-    if intcode(aoc_utils.input().read(), n, v)[0] == 19690720:
+    if intcode(aoc_utils.input_string(), n, v)[0] == 19690720:
         print(100 * n + v)
         break

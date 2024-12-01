@@ -139,10 +139,4 @@ if __name__ == "__main__":
         vector1, vector2 = vectors
         return sum(abs(c1 - c2) for c1, c2 in zip(vector1, vector2))
 
-    print(
-        max(
-            map(
-                manhattan, itertools.permutations(scanner_locations.values(), 2)
-            )
-        )
-    )
+    print(max(map(manhattan, itertools.permutations(scanner_locations.values(), 2))))

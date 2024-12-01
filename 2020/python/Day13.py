@@ -1,18 +1,13 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
-import aoc_utils
-
-"""
-https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Case_of_two_moduli
-algorithm from https://medium.com/@astartekraus/the-chinese-remainder-theorem-ea110f48248c#04ae
-"""
 from functools import reduce
+
+import aoc_utils
 
 
 def chinese_remainder(n, a):
+    """
+    https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Case_of_two_moduli
+    algorithm from https://medium.com/@astartekraus/the-chinese-remainder-theorem-ea110f48248c#04ae
+    """
     sum = 0
     prod = reduce(lambda a, b: a * b, n)
     for n_i, a_i in zip(n, a):
@@ -21,24 +16,20 @@ def chinese_remainder(n, a):
     return sum % prod
 
 
-"""
-https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode
-"""
-
-
 def egcd(a, b):
+    """
+    https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode
+    """
     if a == 0:
-        return (b, 0, 1)
+        return b, 0, 1
     g, y, x = egcd(b % a, a)
-    return (g, x - (b // a) * y, y)
-
-
-"""
-https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse
-"""
+    return g, x - (b // a) * y, y
 
 
 def modinv(a, m):
+    """
+    https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse
+    """
     g, x, y = egcd(a, m)
     if g != 1:
         raise Exception("modular inverse does not exist")
@@ -50,12 +41,12 @@ def modinv(a, m):
 """
 PART ONE-LINER
 """
-ts, buses = int((inp := aoc_utils.input_string_list())[0]), list(
-    map(int, filter(lambda x: x != "x", inp[1].split(",")))
+ts, buses = (
+    int((inp := aoc_utils.input_string_list())[0]),
+    list(map(int, filter(lambda x: x != "x", inp[1].split(",")))),
 )
 print(
-    (b := min(buses, key=lambda x: ((ts // x) + 1) * x))
-    * ((((ts // b) + 1) * b) - ts)
+    (b := min(buses, key=lambda x: ((ts // x) + 1) * x)) * ((((ts // b) + 1) * b) - ts)
 )
 
 #############

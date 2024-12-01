@@ -1,6 +1,7 @@
 import argparse
 import hashlib
 import heapq
+import inspect
 import itertools
 import operator
 from pathlib import Path
@@ -11,8 +12,12 @@ def _get_filename_interactively() -> str:
     return input("Input filename: ").strip()
 
 
+def _get_caller() -> str:
+    return inspect.stack()[-1].filename
+
+
 def _get_path_to_file(filename: str) -> Path:
-    return Path(__file__).parent.parent / "inputs" / filename
+    return Path(_get_caller()).parent.parent / "inputs" / filename
 
 
 def _get_ref_to_file() -> Path:

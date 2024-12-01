@@ -1,8 +1,3 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
 import aoc_utils
 
 
@@ -48,7 +43,7 @@ def execute(o, a, b):
 # print(evaluate("5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))"))
 # print(evaluate("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2"))
 
-inp = aoc_utils.input().readlines()
+inp = aoc_utils.input_string_list()
 
 s = sum(evaluate(line) for line in inp)
 print(s)

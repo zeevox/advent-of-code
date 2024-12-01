@@ -1,8 +1,3 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
 import aoc_utils
 
 xs = [0] + sorted(aoc_utils.input_int_list())

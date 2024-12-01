@@ -1,12 +1,11 @@
-import aoc_utils
-from pprint import pprint
 from math import prod, sqrt
+
+import aoc_utils
 
 
 def parse(inp):
     return {
-        int(block[5:9]): block.splitlines()[1:]
-        for block in inp.strip().split("\n\n")
+        int(block[5:9]): block.splitlines()[1:] for block in inp.strip().split("\n\n")
     }
 
 
@@ -94,8 +93,7 @@ def render(grid, strip=True):
     lines = []
     for row in grid:
         image_row = (
-            map("".join, strip_borders(tile) if strip else tile)
-            for _, tile in row
+            map("".join, strip_borders(tile) if strip else tile) for _, tile in row
         )
         lines.extend(map(("" if strip else " ").join, zip(*image_row)))
 
@@ -110,8 +108,7 @@ if __name__ == "__main__":
     corners = [
         tile_id
         for tile_id in tiles
-        if list(adjacent_tiles(tile_id, tiles[tile_id], tiles)).count(False)
-        == 2
+        if list(adjacent_tiles(tile_id, tiles[tile_id], tiles)).count(False) == 2
     ]
     print(prod(corners))
 
@@ -126,10 +123,10 @@ if __name__ == "__main__":
             for corner in corners:
                 adjacent = list(adjacent_tiles(corner, tiles[corner], tiles))
                 if (
-                    adjacent[0] == False
+                    adjacent[0] is False
                     and adjacent[1]
                     and adjacent[2]
-                    and adjacent[3] == False
+                    and adjacent[3] is False
                 ):
                     grid[0][0] = (corner, tiles[corner])
                     break

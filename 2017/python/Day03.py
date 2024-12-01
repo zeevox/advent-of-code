@@ -1,6 +1,3 @@
-from operator import itemgetter
-
-
 def losb(number: int) -> int:
     """lowest odd square integer below number"""
     sqrt = int(number**0.5)

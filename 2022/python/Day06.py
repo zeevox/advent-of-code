@@ -1,6 +1,6 @@
 import more_itertools
 
-from aoc_utils import *
+from aoc_utils import input_string
 
 
 def main(buffer, n: int = 4):

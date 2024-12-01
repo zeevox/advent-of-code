@@ -1,10 +1,6 @@
-from collections import *
-import itertools
-import random
-import re
-import sys
-import aoc_utils
 from copy import deepcopy
+
+import aoc_utils
 
 
 def main(rs):

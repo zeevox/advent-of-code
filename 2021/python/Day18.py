@@ -30,11 +30,7 @@ class Node:
         return self.right is None
 
     def is_pair(self):
-        return (
-            (not self.is_leaf())
-            and self.left.is_leaf()
-            and self.right.is_leaf()
-        )
+        return (not self.is_leaf()) and self.left.is_leaf() and self.right.is_leaf()
 
     def get_root(self):
         return self if self.parent is None else self.parent.get_root()

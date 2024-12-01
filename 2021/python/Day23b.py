@@ -21,13 +21,9 @@ def print_diagram(c, rs):
     print("#############")
     m = tuple(map(n2s, c))
     print(f"#{''.join(m)}#")
-    print(
-        f"###{n2s(rs[0][0])}#{n2s(rs[1][0])}#{n2s(rs[2][0])}#{n2s(rs[3][0])}###"
-    )
+    print(f"###{n2s(rs[0][0])}#{n2s(rs[1][0])}#{n2s(rs[2][0])}#{n2s(rs[3][0])}###")
     for i in range(1, len(rs[0])):
-        print(
-            f"  #{n2s(rs[0][i])}#{n2s(rs[1][i])}#{n2s(rs[2][i])}#{n2s(rs[3][i])}#"
-        )
+        print(f"  #{n2s(rs[0][i])}#{n2s(rs[1][i])}#{n2s(rs[2][i])}#{n2s(rs[3][i])}#")
     print("  #########")
 
 

@@ -1,4 +1,4 @@
-from aoc_utils import *
+from aoc_utils import input_string_list
 
 strings = input_string_list()
 
@@ -28,8 +28,7 @@ def nice(string: str) -> bool:
 
 def rule4(string: str) -> bool:
     return any(
-        window in pre or window in post
-        for pre, window, post in windowed(string, 2)
+        window in pre or window in post for pre, window, post in windowed(string, 2)
     )
 
 
