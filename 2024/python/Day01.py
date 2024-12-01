@@ -1,23 +1,22 @@
 from collections import Counter
+from typing import Iterable
 
 import aoc_utils
 
 
-def parse_line(line: str) -> tuple[int, ...]:
-    return tuple(map(int, line.split()))
+def get_lists(lines: list[str]) -> tuple[Iterable[int], Iterable[int]]:
+    parsed = (line.split() for line in lines)
+    left, right = zip(*parsed)
+    return map(int, left), map(int, right)
 
 
-def get_lists(lines: list[str]) -> tuple[tuple, tuple]:
-    parsed = [parse_line(line) for line in lines]
-    left, right = list(zip(*parsed))
-    return left, right
-
-
+@aoc_utils.timing
 def part1(lines: list[str]) -> int:
     left, right = get_lists(lines)
-    return sum([abs(al - ar) for al, ar in zip(sorted(left), sorted(right))])
+    return sum(abs(al - ar) for al, ar in zip(sorted(left), sorted(right)))
 
 
+@aoc_utils.timing
 def part2(lines: list[str]) -> int:
     left, right = get_lists(lines)
     lookup = Counter(right)
