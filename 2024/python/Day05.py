@@ -10,23 +10,8 @@ def solve(rules: list[tuple[int, int]], manuals: list[list[int]]):
     for page_before, page_after in rules:
         rules_dict[page_after].add(page_before)
 
-    middle_page_sum: int = 0
-    invalid_updates: list[list[int]] = []
-    for uidx, update in enumerate(manuals):
-        for idx, page in enumerate(update[:-1]):
-            # if any of the following pages in the update *must*
-            # come before the current page, it's invalid
-            if any(
-                following_page in rules_dict[page]
-                for following_page in update[idx + 1 :]
-            ):
-                invalid_updates.append(update)
-                break  # don't process any further
-
-        else:  # else of for loop means we didn't break, valid update
-            middle_page_sum += update[len(update) // 2]
-
     def comparator(page1: int, page2: int) -> Literal[-1, 0, 1]:
+        """comparator for page numbers"""
         if page2 in rules_dict[page1]:
             return 1
         elif page1 in rules_dict[page2]:
@@ -34,12 +19,30 @@ def solve(rules: list[tuple[int, int]], manuals: list[list[int]]):
         else:
             return 0
 
-    invalids_middle_page_sum = sum(
-        sorted(update, key=cmp_to_key(comparator))[len(update) // 2]
-        for update in invalid_updates
-    )
+    def is_update_valid(update: list[int]) -> bool:
+        """whether the pages of an update are in the right order"""
+        for idx, page in enumerate(update[:-1]):
+            # if any of the following pages in the update *must*
+            # come before the current page, it's invalid
+            if any(
+                following_page in rules_dict[page]
+                for following_page in update[idx + 1 :]
+            ):
+                return False
 
-    return middle_page_sum, invalids_middle_page_sum
+        # if we never broke out the loop it's a valid update
+        return True
+
+    valid_page_sum: int = 0
+    invalid_page_sum: int = 0
+    for update in manuals:
+        if is_update_valid(update):
+            valid_page_sum += update[len(update) // 2]
+        else:
+            correct_order = sorted(update, key=cmp_to_key(comparator))
+            invalid_page_sum += correct_order[len(update) // 2]
+
+    return valid_page_sum, invalid_page_sum
 
 
 if __name__ == "__main__":
