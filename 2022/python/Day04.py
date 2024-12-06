@@ -15,7 +15,7 @@ def ce(e1, e2):
 def ove(e1, e2):
     e1a, e1b = e1
     e2a, e2b = e2
-    return e1b >= e2a and e1a <= e2a or e2b >= e1a and e2a <= e1a
+    return (e1b >= e2a and e1a <= e2a) or (e2b >= e1a and e2a <= e1a)
 
 
 def parse(line):

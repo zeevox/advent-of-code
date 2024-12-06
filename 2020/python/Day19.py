@@ -11,7 +11,7 @@ for rule in rules.split("\n"):
     rs[rule[0]] = rule[1]
 
 
-@lru_cache()
+@lru_cache
 def eval(s, part2=False):
     groups = []
     for group in s.split(" | "):

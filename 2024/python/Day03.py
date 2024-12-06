@@ -1,5 +1,6 @@
-import aoc_utils
 import re
+
+import aoc_utils
 
 
 def part1(lines: list[str]) -> int:

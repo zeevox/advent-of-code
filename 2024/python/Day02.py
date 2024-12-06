@@ -1,20 +1,19 @@
+import itertools
+
 import aoc_utils
 
 
 def validate(report: list[int]) -> bool:
     # all increasing or all decreasing
     # consecutive entries differ by 1, 2, or 3
-    diffs = [report[i] - report[i - 1] for i in range(1, len(report))]
+    diffs = [a - b for a, b in itertools.pairwise(report)]
     return all(d in {1, 2, 3} for d in diffs) or all(d in {-1, -2, -3} for d in diffs)
 
 
 def validate2(report: list[int]) -> bool:
     if validate(report):
         return True
-    for i in range(0, len(report)):
-        if validate(report[:i] + report[i + 1 :]):
-            return True
-    return False
+    return any(validate(report[:i] + report[i + 1 :]) for i in range(len(report)))
 
 
 def part1(reports: list[str]):

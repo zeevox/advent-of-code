@@ -1,6 +1,6 @@
 import aoc_utils
 
-xs = [0] + sorted(aoc_utils.input_int_list())
+xs = [0, *sorted(aoc_utils.input_int_list())]
 
 di = {
     x: [x + j for j in [1, 2, 3] if x + j in xs[i + 1 : i + 4]]

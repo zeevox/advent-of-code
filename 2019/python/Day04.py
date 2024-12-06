@@ -5,8 +5,8 @@ def has_double(s):
 def has_only_double(s):
     return any(
         s[i] == s[i + 1]
-        and (i >= 1 and s[i - 1] != s[i] or i == 0)
-        and (i < len(s) - 2 and s[i + 2] != s[i] or i == len(s) - 2)
+        and ((i >= 1 and s[i - 1] != s[i]) or i == 0)
+        and ((i < len(s) - 2 and s[i + 2] != s[i]) or i == len(s) - 2)
         for i in range(len(s) - 1)
     )
 

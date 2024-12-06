@@ -1,7 +1,8 @@
-import aoc_utils
 import collections
-from typing import Literal
 from functools import cmp_to_key
+from typing import Literal
+
+import aoc_utils
 
 
 def solve(rules: list[tuple[int, int]], manuals: list[list[int]]):

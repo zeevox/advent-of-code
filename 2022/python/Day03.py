@@ -1,5 +1,5 @@
+from collections.abc import Iterable
 from string import ascii_letters
-from typing import Iterable
 
 import more_itertools
 from aoc_utils import flat_map, input_string_list

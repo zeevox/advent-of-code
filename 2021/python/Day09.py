@@ -63,7 +63,7 @@ def main(grid: list[list[int]]):
 
         # print_grid(grid, processed)
         basin_sizes.append(len(visited))
-    print(reduce(lambda x, y: x * y, list(sorted(basin_sizes))[-3:], 1))
+    print(reduce(lambda x, y: x * y, sorted(basin_sizes)[-3:], 1))
 
 
 if __name__ == "__main__":

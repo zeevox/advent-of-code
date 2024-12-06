@@ -1,9 +1,8 @@
 import itertools
 import queue
 
-from parse import parse
-
 import aoc_utils
+from parse import parse
 
 """
 I spent way too long faffing around with rotating the

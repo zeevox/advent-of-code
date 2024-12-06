@@ -12,9 +12,7 @@ def main(parttwo=False):
             parttwo
             and (line[-1][int(line[0]) - 1] + line[-1][int(line[1]) - 1]).count(line[2])
             == 1
-        ):
-            count += 1
-        elif not parttwo and int(line[0]) <= occurs and int(line[1]) >= occurs:
+        ) or (not parttwo and int(line[0]) <= occurs and int(line[1]) >= occurs):
             count += 1
     return count
 

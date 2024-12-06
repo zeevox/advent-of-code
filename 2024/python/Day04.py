@@ -1,4 +1,4 @@
-from collections.abc import Sequence, Collection, Iterable
+from collections.abc import Collection, Iterable, Sequence
 
 import aoc_utils
 

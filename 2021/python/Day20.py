@@ -1,13 +1,13 @@
 import functools
 import operator
-from typing import Generator
+from collections.abc import Generator
 
 import aoc_utils
 
 
 def gen_adjacent_coords(
     point: tuple[int, int],
-) -> Generator[tuple[int, int], None, None]:
+) -> Generator[tuple[int, int]]:
     for vertical_offset in [-1, 0, 1]:
         for horizontal_offset in [-1, 0, 1]:
             yield (point[0] + horizontal_offset, point[1] + vertical_offset)

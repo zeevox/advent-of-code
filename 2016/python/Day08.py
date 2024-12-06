@@ -1,4 +1,4 @@
-from aoc_utils import gen_rectangle_coords, print_grid_set_dict, input_string_list
+from aoc_utils import gen_rectangle_coords, input_string_list, print_grid_set_dict
 
 width = 50
 height = 6

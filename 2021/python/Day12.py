@@ -1,8 +1,7 @@
 import queue
 
-import networkx as nx
-
 import aoc_utils
+import networkx as nx
 
 
 def count_double_lowers(path: list[str]):
@@ -31,7 +30,7 @@ def main(lines: list[str]):
         for n in g.neighbors(node[-1]):
             if n == "start" or (n.islower() and n in node):
                 continue
-            q.put(node + [n])
+            q.put([*node, n])
     print(len(paths))
 
     q = queue.Queue()
@@ -47,7 +46,7 @@ def main(lines: list[str]):
                 n.islower() and count_double_lowers(node) > 0 and n in node
             ):
                 continue
-            q.put(node + [n])
+            q.put([*node, n])
     print(len(paths))
 
 

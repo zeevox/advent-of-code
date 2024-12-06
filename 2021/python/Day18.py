@@ -39,7 +39,7 @@ class Node:
         return (
             str(self.left)
             if self.is_leaf()
-            else f"[{str(self.left)}, {str(self.right)}]"
+            else f"[{self.left!s}, {self.right!s}]"
         )
 
     def add_num(self, int_node: "Node"):

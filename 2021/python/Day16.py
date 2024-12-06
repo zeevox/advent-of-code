@@ -31,7 +31,7 @@ class Packet:
     type: int
     value: int
     extra: str
-    subpackets: list["Packet"] = []
+    subpackets: list["Packet"] = None
 
     def __init__(self, bin_str: str) -> None:
         self.version = int(bin_str[:3], 2)

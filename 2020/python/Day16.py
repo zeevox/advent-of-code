@@ -37,7 +37,7 @@ for n, rule in rules.items():
     #    continue
     for col in range(len(ts[0])):
         if all(valid(int(t[col]), rule) for t in ts):
-            cols[n] = cols.get(n, []) + [col]
+            cols[n] = [*cols.get(n, []), col]
 
 # print(cols)
 

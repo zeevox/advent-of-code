@@ -1,5 +1,5 @@
 from collections import Counter
-from typing import Iterable
+from collections.abc import Iterable
 
 import aoc_utils
 

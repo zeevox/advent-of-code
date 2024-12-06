@@ -1,6 +1,5 @@
-import parse
-
 import aoc_utils
+import parse
 
 
 def triangle(n: int):

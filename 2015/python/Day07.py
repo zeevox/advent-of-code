@@ -8,7 +8,7 @@ instructions = input_string_list()
 wires = {out: command for *command, _, out in map(str.split, instructions)}
 
 
-@lru_cache()
+@lru_cache
 def process(wire: str) -> int:
     if wire.isnumeric():
         return int(wire)

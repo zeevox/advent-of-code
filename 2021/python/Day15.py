@@ -1,6 +1,5 @@
-import networkx as nx
-
 import aoc_utils
+import networkx as nx
 
 ###
 # reuse from day 9
@@ -17,7 +16,7 @@ def adjacent(point, size):
         yield (point[0], point[1] - 1)
 
 
-def print_grid(grid: list[list], points: set[tuple] = None) -> None:
+def print_grid(grid: list[list], points: set[tuple] | None = None) -> None:
     for y, row in enumerate(grid):
         for x, value in enumerate(row):
             if points is None or (x, y) in points:

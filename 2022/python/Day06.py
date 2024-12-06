@@ -1,5 +1,4 @@
 import more_itertools
-
 from aoc_utils import input_string
 
 

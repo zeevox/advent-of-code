@@ -1,7 +1,8 @@
-import aoc_utils
-import networkx as nx
 import functools
 import operator
+
+import aoc_utils
+import networkx as nx
 
 
 def parse_line(line: str) -> list[tuple[int, int]]:

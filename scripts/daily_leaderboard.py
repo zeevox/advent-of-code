@@ -30,7 +30,7 @@ def get_session_cookie() -> str:
         print("Error: No cookie file found.")
         exit(1)
 
-    with open(cookie_file, "r") as f:
+    with open(cookie_file) as f:
         return json.load(f)["session-cookie"]
 
 
@@ -211,9 +211,9 @@ def main():  #
             dt, suppress=["days"], minimum_unit="seconds", format="%0d"
         )
     )
-    last_refresh = [
+    last_refresh = next(
         response.created_at for response in session.cache.responses.values()
-    ][0]
+    )
     print(
         f"<p>Last refreshed {humanize.naturaldelta(last_refresh)} ago (cached for 15 minutes)</p>"
     )

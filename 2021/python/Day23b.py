@@ -59,7 +59,7 @@ def top_amphi(room):
     return next(((i, a) for i, a in enumerate(room) if a), (None, None))
 
 
-@lru_cache()
+@lru_cache
 def move_r2c(c, rs):
     # moves from rooms into corridor
     for rno, room in enumerate(rs):
@@ -88,7 +88,7 @@ def move_r2c(c, rs):
             )
 
 
-@lru_cache()
+@lru_cache
 def move_c2r(c, rs):
     # take the amphipod and its position in the corridor
     for apos, a in enumerate(c):
@@ -104,10 +104,10 @@ def move_c2r(c, rs):
             continue
         # if the route is clear
         if (
-            apos > ri
-            and not any(c[ri + 1 : apos])
-            or apos < ri
-            and not any(c[apos + 1 : ri])
+            (apos > ri
+            and not any(c[ri + 1 : apos]))
+            or (apos < ri
+            and not any(c[apos + 1 : ri]))
         ):
             topi, _ = top_amphi(rs[rno])
             if topi is None:
@@ -121,7 +121,7 @@ def move_c2r(c, rs):
             yield (moves * 10 ** (a - 1), (nc, nrs))
 
 
-@lru_cache()
+@lru_cache
 def move(c, rs):
     try:
         yield next(move_c2r(c, rs))

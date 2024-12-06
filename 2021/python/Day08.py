@@ -1,4 +1,4 @@
-from typing import Callable, Iterable
+from collections.abc import Callable, Iterable
 
 import aoc_utils
 
@@ -50,25 +50,23 @@ def main(xs: list[str]):
             lambda x: x not in [seven, four, eight, one, nine, three, zero, six, five],
             inp,
         )
-        mapping: list[tuple[str, ...]] = list(
-            map(
-                lambda x: tuple(sorted(list(x))),
-                [
-                    zero,
-                    one,
-                    two,
-                    three,
-                    four,
-                    five,
-                    six,
-                    seven,
-                    eight,
-                    nine,
-                ],
-            )
-        )
+        mapping: list[tuple[str, ...]] = [
+            tuple(sorted(x))
+            for x in [
+                zero,
+                one,
+                two,
+                three,
+                four,
+                five,
+                six,
+                seven,
+                eight,
+                nine,
+            ]
+        ]
 
-        value = "".join(str(mapping.index(tuple(sorted(list(digit))))) for digit in out)
+        value = "".join(str(mapping.index(tuple(sorted(digit)))) for digit in out)
         count += int(value)
 
     print(count)

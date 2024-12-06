@@ -1,11 +1,10 @@
 import itertools
-import typing
 from queue import Queue
 
 import numpy as np
 
 
-def print_grid(grid: typing.Union[np.ndarray, list[list[object]]]) -> None:
+def print_grid(grid: np.ndarray | list[list[object]]) -> None:
     """Prints a 2D array as a grid"""
     print(*map("".join, grid), sep="\n")
 
@@ -14,7 +13,7 @@ def get_neighbours(
     point: list[int],
     include_diagonals: bool = True,
     exclude_p: bool = True,
-    shape: list[int] = None,
+    shape: list[int] | None = None,
 ):
     """
     Yield the coordinates of points directly (or diagonally) adjacent to a given point, excluding points that are out of bounds
@@ -27,7 +26,7 @@ def get_neighbours2(
     p: list[int],
     include_diagonals: bool = True,
     exclude_p: bool = True,
-    shape: list[int] = None,
+    shape: list[int] | None = None,
 ):
     """adapted from https://stackoverflow.com/a/34908879"""
 

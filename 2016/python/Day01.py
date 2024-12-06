@@ -4,6 +4,7 @@ instructions = input_string().split(", ")
 
 x = y = rot = 0
 visited = {(0, 0)}
+visited_twice = None
 
 for op, *count in instructions:
     count = int("".join(count))
@@ -15,27 +16,25 @@ for op, *count in instructions:
         rot = (rot + 90) % 360
     if rot == 0:
         visits = {(x, y + (i + 1)) for i in range(count)}
-        if visited & visits:
-            print(visited & visits)
+        if not visited_twice and (place := visited & visits):
+            assert len(place) == 1
+            visited_twice = next(iter(place))
         visited |= visits
         y += count
     elif rot == 180:
         visits = {(x, y - (i + 1)) for i in range(count)}
-        if visited & visits:
-            print(visited & visits)
         visited |= visits
         y -= count
     elif rot == 270:
         visits = {(x - (i + 1), y) for i in range(count)}
-        if visited & visits:
-            print(visited & visits)
         visited |= visits
         x -= count
 
     elif rot == 90:
         visits = {(x + (i + 1), y) for i in range(count)}
-        if visited & visits:
-            print(visited & visits)
         visited |= visits
         x += count
-print(abs(x) + abs(y))
+print("Part 1:", abs(x) + abs(y))
+
+v2x, v2y = visited_twice
+print("Part 2:", abs(v2x) + abs(v2y))

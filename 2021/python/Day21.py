@@ -1,6 +1,5 @@
-from parse import Result, parse
-
 import aoc_utils
+from parse import Result, parse
 
 
 def main(a, b):

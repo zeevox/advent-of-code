@@ -20,31 +20,23 @@ for line in inp.strip().splitlines():
         # print(allergen, ingredients)
         database[allergen] += [set(ingredients)]
 
-print("== Initial database ==")
-print(*database.items(), sep="\n")
-
 for allergen, ingredients in database.items():
     database[allergen] = set.intersection(*ingredients)
 
-print("== After iteration ==")
-print(*database.items(), sep="\n")
-
 hypoallergenic = set(all_ingredients) - set.union(*database.values())
 
-print("== Hypoallergenic ingredients ==")
-print(hypoallergenic)
 print(
+    "Part 1:",
     sum(
         all_ingredients.count(hypoallergenic_ingredient)
         for hypoallergenic_ingredient in hypoallergenic
-    )
+    ),
 )
 
-print("== Dangerous ingredient list ==")
 while any(len(ingredients) != 1 for ingredients in database.values()):
     for allergen, ingredients in database.items():
         if len(ingredients) == 1:
             for other_allergen, value in database.items():
                 if allergen is not other_allergen:
                     value -= ingredients
-print(",".join(list(database[k])[0] for k in sorted(database)))
+print("Part 2:", ",".join(next(iter(database[k])) for k in sorted(database)))

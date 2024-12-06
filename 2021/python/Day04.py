@@ -5,7 +5,7 @@ def main(numbers: list[int], boards: list[list[list[int]]], func=max):
     turns = func(
         zip(
             range(len(boards)),
-            map(lambda x: min_drawn_numbers_for_board(numbers, x), boards),
+            (min_drawn_numbers_for_board(numbers, x) for x in boards),
         ),
         key=lambda x: x[1][2],
     )
@@ -18,11 +18,11 @@ def main(numbers: list[int], boards: list[list[list[int]]], func=max):
 
 
 def parse_board(board: str) -> list[list[int]]:
-    return list(map(lambda x: list(map(int, x.split())), board.split("\n")))
+    return [list(map(int, x.split())) for x in board.split("\n")]
 
 
 def filter_minus_ones_from_board(board: list[list[int]]) -> list[list[int]]:
-    return list(map(lambda row: list(filter(lambda x: x != -1, row)), board))
+    return [list(filter(lambda x: x != -1, row)) for row in board]
 
 
 def min_drawn_numbers_for_board(

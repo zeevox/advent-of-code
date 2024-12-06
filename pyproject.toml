@@ -13,7 +13,11 @@ dependencies = [
     "pre-commit>=4.0.1",
     "ruff>=0.8.1",
     "sortedcontainers>=2.4.0",
+    "tqdm>=4.67.1",
 ]
 
 [tool.uv.sources]
 aoc-utils = { path = "common/python" }
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "TID", "C4", "RUF"]

@@ -7,8 +7,9 @@ import itertools
 import operator
 import re
 import timeit
+from collections.abc import Callable, Collection, Generator, Iterable
 from pathlib import Path
-from typing import Any, Callable, Collection, Generator, Iterable
+from typing import Any
 
 
 def _get_filename_interactively() -> str:
@@ -98,7 +99,7 @@ def flat_map(func: Callable[..., Iterable], iterable: Iterable) -> list:
 
 def gen_flat_map(
     func: Callable[..., Iterable], iterable: Iterable
-) -> Generator[Any, None, None]:
+) -> Generator[Any]:
     """map a function returning a list over a list and concatenate the results"""
     for item in iterable:
         yield from func(item)

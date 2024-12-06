@@ -41,7 +41,7 @@ def parse_groups(groups: list[list[str]]):
     return filesystem
 
 
-@lru_cache()
+@lru_cache
 def size_dir(dir: Path):
     global filesystem
     values = filesystem.get(dir, -1)

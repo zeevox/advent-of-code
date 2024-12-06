@@ -2,9 +2,8 @@ import dataclasses
 import itertools
 from collections import Counter
 
-import parse
-
 import aoc_utils
+import parse
 
 
 def parse_line(s: str):
@@ -93,7 +92,7 @@ def part2(string: list[str]) -> int:
             new_cuboids[cuboid] += 1
         cuboids.update(new_cuboids)
 
-    return sum(map(lambda x: len(x[0]) * x[1], cuboids.items()))
+    return sum(len(x[0]) * x[1] for x in cuboids.items())
 
 
 if __name__ == "__main__":

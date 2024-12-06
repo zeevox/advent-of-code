@@ -1,8 +1,7 @@
 from collections import Counter, defaultdict
 
-import more_itertools
-
 import aoc_utils
+import more_itertools
 
 
 def main(molecule: str, replacements):

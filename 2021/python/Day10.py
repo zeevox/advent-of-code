@@ -30,7 +30,7 @@ def main(lines: list[str]):
         stack = []
         for i, character in enumerate(line):
             # iterate through until an unmatched bracket is found
-            if character in matches.keys():
+            if character in matches:
                 # if the character is an open bracket, add it to the stack
                 stack.append(character)
             elif character in matches.values():

@@ -2,7 +2,7 @@ import aoc_utils
 
 # Part 1
 ms = aoc_utils.input_int_list()
-print(sum(map(lambda m: (m // 3) - 2, ms)))
+print(sum((m // 3) - 2 for m in ms))
 
 
 def fuel(n):

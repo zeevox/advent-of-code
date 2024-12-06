@@ -54,7 +54,7 @@ def move_r2c_valid_pos(ri, c):
         yield p
 
 
-@lru_cache()
+@lru_cache
 def move_r2c(c, rs):
     # moves from rooms into corridor
     for rno, (r1, r2) in enumerate(rs):
@@ -91,7 +91,7 @@ def move_r2c(c, rs):
             )
 
 
-@lru_cache()
+@lru_cache
 def move_c2r(c, rs):
     # take the amphipod and its position in the corridor
     for apos, a in enumerate(c):
@@ -107,10 +107,10 @@ def move_c2r(c, rs):
             continue
         # if the route is clear
         if (
-            apos > ri
-            and not any(c[ri + 1 : apos])
-            or apos < ri
-            and not any(c[apos + 1 : ri])
+            (apos > ri
+            and not any(c[ri + 1 : apos]))
+            or (apos < ri
+            and not any(c[apos + 1 : ri]))
         ):
             cost = abs(ri - apos)
             nc = replace(c, apos, 0)
@@ -123,7 +123,7 @@ def move_c2r(c, rs):
             yield (cost * 10 ** (a - 1), (nc, nrs))
 
 
-@lru_cache()
+@lru_cache
 def move(c, rs):
     try:
         yield next(move_c2r(c, rs))
