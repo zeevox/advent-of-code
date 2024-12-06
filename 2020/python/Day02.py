@@ -6,7 +6,7 @@ import aoc_utils
 def main(parttwo=False):
     count = 0
     for line in aoc_utils.input_string_list():
-        line = re.split("-|: | ", line)
+        line = re.split(r"-|: | ", line)
         occurs = line[-1].count(line[2])
         if (
             parttwo

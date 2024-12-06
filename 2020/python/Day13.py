@@ -30,7 +30,7 @@ def modinv(a, m):
     """
     https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse
     """
-    g, x, y = egcd(a, m)
+    g, x, _y = egcd(a, m)
     if g != 1:
         raise Exception("modular inverse does not exist")
     else:

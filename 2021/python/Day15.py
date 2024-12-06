@@ -96,7 +96,7 @@ def part2(grid: list[list]):
 
     for j in range(5):
         for i in range(5):
-            offset = offsets[(i, j)]
+            offset = offsets[i, j]
 
             for y in range(gy):
                 for x in range(gx):

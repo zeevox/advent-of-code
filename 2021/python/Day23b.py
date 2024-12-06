@@ -103,11 +103,8 @@ def move_c2r(c, rs):
         if not valid_room(a, rs[rno]):
             continue
         # if the route is clear
-        if (
-            (apos > ri
-            and not any(c[ri + 1 : apos]))
-            or (apos < ri
-            and not any(c[apos + 1 : ri]))
+        if (apos > ri and not any(c[ri + 1 : apos])) or (
+            apos < ri and not any(c[apos + 1 : ri])
         ):
             topi, _ = top_amphi(rs[rno])
             if topi is None:

@@ -36,11 +36,7 @@ class Node:
         return self if self.parent is None else self.parent.get_root()
 
     def __str__(self):
-        return (
-            str(self.left)
-            if self.is_leaf()
-            else f"[{self.left!s}, {self.right!s}]"
-        )
+        return str(self.left) if self.is_leaf() else f"[{self.left!s}, {self.right!s}]"
 
     def add_num(self, int_node: "Node"):
         assert self.is_leaf()

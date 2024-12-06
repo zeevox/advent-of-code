@@ -97,9 +97,7 @@ def flat_map(func: Callable[..., Iterable], iterable: Iterable) -> list:
     return output
 
 
-def gen_flat_map(
-    func: Callable[..., Iterable], iterable: Iterable
-) -> Generator[Any]:
+def gen_flat_map(func: Callable[..., Iterable], iterable: Iterable) -> Generator[Any]:
     """map a function returning a list over a list and concatenate the results"""
     for item in iterable:
         yield from func(item)
@@ -162,7 +160,7 @@ def print_grid_set_dict(
             if (x, y) not in coords:
                 print(empty, end=sep)
                 continue
-            print(grid[(x, y)] if isinstance(grid, dict) else filled, end=sep)
+            print(grid[x, y] if isinstance(grid, dict) else filled, end=sep)
         print()
 
 

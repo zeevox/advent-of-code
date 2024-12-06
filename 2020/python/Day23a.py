@@ -56,7 +56,7 @@ if __name__ == "__main__":
     print(current, cups)
 
     for i in range(100):
-        print(f"\n-- move {i+1} --")
+        print(f"\n-- move {i + 1} --")
         print_cups(current, cups)
         current, cups = move(current, cups)
 

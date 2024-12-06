@@ -26,7 +26,7 @@ count = 0
 ssls = set()
 for ip in data:
     bad = set(re.findall(r"\[(.*?)\]", ip))
-    good = set(re.split("\\[|\\]", ip)) - bad
+    good = set(re.split(r"\[|\]", ip)) - bad
     if any(has_abba(s) for s in good) and not any(has_abba(s) for s in bad):
         print(ip)
         count += 1

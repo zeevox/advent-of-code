@@ -10,7 +10,7 @@ def main(numbers: list[int], boards: list[list[list[int]]], func=max):
         key=lambda x: x[1][2],
     )
     # index of board, (index of row, number of turns required)
-    board_index, (is_column, row_index, turns_required) = turns
+    board_index, (_is_column, _row_index, turns_required) = turns
     print(
         sum(map(sum, filter_minus_ones_from_board(boards[board_index])))
         * numbers[turns_required - 1]

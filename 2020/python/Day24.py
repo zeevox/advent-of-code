@@ -58,11 +58,8 @@ def cellular_automata(tiles):
         )
 
         if (
-            (flips % 2 == 1
-            and (adjacent_black_tiles == 0 or adjacent_black_tiles > 2))
-            or (flips % 2 != 1
-            and adjacent_black_tiles == 2)
-        ):
+            flips % 2 == 1 and (adjacent_black_tiles == 0 or adjacent_black_tiles > 2)
+        ) or (flips % 2 != 1 and adjacent_black_tiles == 2):
             new_tiles[tile] += 1
     return new_tiles
 

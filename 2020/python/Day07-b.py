@@ -5,7 +5,7 @@ import aoc_utils
 
 def main():
     inp = [
-        re.split(" bags contain |, ", line) for line in aoc_utils.input_string_list()
+        re.split(r" bags contain |, ", line) for line in aoc_utils.input_string_list()
     ]
     return bagscontain("shiny gold", inp)
 
